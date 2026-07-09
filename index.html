@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Бешамел — Домашно. С отношение.</title>
+<meta name="description" content="Бешамел — вкусна домашна храна, приготвена прясно всеки ден. Заведения и ToGo в София." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html"><img src="assets/logo-white.png" alt="Бешамел" /></a>
+  <nav class="nav__links">
+    <a href="about.html" data-bg="За нас" data-en="About" data-ru="О нас">За нас</a>
+    <a href="products.html" data-bg="Продукти" data-en="Products" data-ru="Продукция">Продукти</a>
+    <a href="togo.html" data-bg="ToGo" data-en="ToGo" data-ru="ToGo">ToGo</a>
+    <a href="franchise.html" data-bg="Франчайз" data-en="Franchise" data-ru="Франшиза">Франчайз</a>
+    <a href="careers.html" data-bg="Кариери" data-en="Careers" data-ru="Карьера">Кариери</a>
+    <a href="contact.html" data-bg="Контакти" data-en="Contact" data-ru="Контакты">Контакти</a>
+  </nav>
+  <div class="nav__right">
+    <a class="btn btn--solid nav__order js-order-link" href="#" data-bg="Поръчай онлайн" data-en="Order online" data-ru="Заказать онлайн">Поръчай онлайн</a>
+    <button class="lang" id="lang">
+      <span data-l="bg" class="lang__opt is-active">BG</span><span class="lang__sep">/</span><span data-l="en" class="lang__opt">EN</span><span class="lang__sep">/</span><span data-l="ru" class="lang__opt">RU</span>
+    </button>
+    <a class="btn btn--pill" href="products.html" data-bg="Дневно меню" data-en="Daily menu" data-ru="Меню дня">Дневно меню</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero dark" id="hero">
+    <div class="hero__sticky">
+      <canvas class="hero__video" id="heroCanvas" aria-label="Бешамел — сложената маса"></canvas>
+      <div class="hero__veil"></div>
+      <div class="hero__layer hero__intro" id="heroIntro">
+        <p class="kicker" data-bg="Домашна кухня · София · от 2019" data-en="Home cooking · Sofia · since 2019" data-ru="Домашняя кухня · София · с 2019 года">Домашна кухня · София · от 2019</p>
+        <h1 class="hero__title">
+          <span data-bg="Домашно." data-en="Homestyle." data-ru="По-домашнему.">Домашно.</span>
+          <span class="accent" data-bg="С отношение." data-en="With care." data-ru="С душой.">С отношение.</span>
+        </h1>
+        <p class="hero__sub" data-bg="Вкусна домашна храна, приготвена прясно всеки ден." data-en="Delicious home-style food, cooked fresh every single day." data-ru="Вкусная домашняя еда, которую мы готовим свежей каждый день.">Вкусна домашна храна, приготвена прясно всеки ден.</p>
+      </div>
+      <div class="hero__layer hero__outro" id="heroOutro">
+        <p class="kicker accent" data-bg="Прясно. Всеки ден." data-en="Fresh. Every day." data-ru="Свежее. Каждый день.">Прясно. Всеки ден.</p>
+        <h2 class="hero__title" data-bg="Това е Бешамел." data-en="This is Beshamel." data-ru="Это Бешамел.">Това е Бешамел.</h2>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#daily" data-bg="Виж менюто" data-en="See the menu" data-ru="Смотреть меню">Виж менюто</a>
+          <a class="btn btn--ghost" href="#map" data-bg="Намери ни" data-en="Find us" data-ru="Найти нас">Намери ни</a>
+        </div>
+      </div>
+      <div class="hero__scroll" id="heroScroll"><span data-bg="Скролни" data-en="Scroll" data-ru="Листайте">Скролни</span><i></i></div>
+    </div>
+  </section>
+
+  <section class="daily light" id="daily">
+    <div class="wrap reveal">
+      <p class="kicker accent" data-bg="Различно всеки ден" data-en="Different every day" data-ru="Каждый день — разное">Различно всеки ден</p>
+      <h2 class="h2 h2--dark" data-bg="Менюто се сменя всеки ден" data-en="The menu changes every day" data-ru="Меню меняется каждый день">Менюто се сменя всеки ден</h2>
+      <p class="lead" data-bg="Микс от сезонни ястия и постоянни любимци — всички приготвени в деня на предлагането им." data-en="A mix of seasonal dishes and permanent favourites — all cooked the same day they are served." data-ru="Микс сезонных блюд и постоянных фаворитов — всё готовится в день подачи.">Микс от сезонни ястия и постоянни любимци — всички приготвени в деня на предлагането им.</p>
+      <div class="dishgrid" style="margin-top:2.4rem">
+        <article class="dishcard">
+          <img src="assets/menu/m21.webp" alt="Гръцка мусака" />
+          <b data-bg="Гръцка мусака" data-en="Greek moussaka" data-ru="Мусака по-гречески">Гръцка мусака</b>
+          <span class="info"><span>350гр.</span><span>546кал.</span><span class="price">4,60 € / 9,00 лв</span></span>
+        </article>
+        <article class="dishcard">
+          <img src="assets/menu/m23.webp" alt="Кюфтета по Цариградски" />
+          <b data-bg="Кюфтета по Цариградски" data-en="Tsarigrad meatballs" data-ru="Тефтели по-цареградски">Кюфтета по Цариградски</b>
+          <span class="info"><span>350гр.</span><span>683кал.</span><span class="price">4,60 € / 9,00 лв</span></span>
+        </article>
+        <article class="dishcard">
+          <img src="assets/menu/m14.webp" alt="Миш-маш" />
+          <b data-bg="Миш-маш" data-en="Mish-mash" data-ru="Миш-маш">Миш-маш</b>
+          <span class="info"><span>300гр.</span><span>629кал.</span><span class="price">4,10 € / 8,02 лв</span></span>
+        </article>
+        <article class="dishcard">
+          <img src="assets/menu/m12.webp" alt="Боб яхния" />
+          <b data-bg="Боб яхния" data-en="Bean stew" data-ru="Тушёная фасоль по-болгарски">Боб яхния</b>
+          <span class="info"><span>350гр.</span><span>458кал.</span><span class="price">3,50 € / 6,85 лв</span></span>
+        </article>
+      </div>
+      <div style="text-align:center;margin-top:2.2rem">
+        <a class="btn btn--solid" href="products.html" data-bg="Цялото меню" data-en="Full menu" data-ru="Полное меню">Цялото меню</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" id="weekly" style="background:var(--surface)">
+    <div class="wrap reveal">
+      <p class="kicker accent" data-bg="Промоциите на седмицата" data-en="This week's specials" data-ru="Акции недели">Промоциите на седмицата</p>
+      <h2 class="h2 h2--dark" data-bg="Три изкушения на специална цена" data-en="Three temptations at a special price" data-ru="Три соблазна по специальной цене">Три изкушения на специална цена</h2>
+      <p class="wpromo-week"><span class="js-wpweek"></span></p>
+      <div class="dishgrid dishgrid--3 js-wpromos"></div>
+      <p class="menu-note" style="color:var(--text-soft)" data-bg="Промоциите се сменят всяка седмица — питай на касата или ни последвай във Facebook." data-en="The specials change every week — ask at the till or follow us on Facebook." data-ru="Акции меняются каждую неделю — спросите на кассе или подпишитесь на нас в Facebook.">Промоциите се сменят всяка седмица — питай на касата или ни последвай във Facebook.</p>
+    </div>
+  </section>
+
+  <section class="discipline dark" id="discipline">
+    <div class="disc-head reveal">
+      <p class="kicker accent" data-bg="Дисциплината" data-en="The discipline" data-ru="Дисциплина">Дисциплината</p>
+      <h2 class="h2" data-bg="Невидимият стандарт зад един обяд" data-en="The invisible standard behind a simple lunch" data-ru="Незримый стандарт за простым обедом">Невидимият стандарт зад един обяд</h2>
+    </div>
+    <div class="disc-track" id="discTrack">
+      <article class="disc-panel">
+        <img src="assets/process/technology.png" alt="" />
+        <div class="disc-panel__txt">
+          <span class="disc-panel__no">01</span>
+          <h3 data-bg="Технологията" data-en="Technology" data-ru="Технология">Технологията</h3>
+          <p data-bg="Уреди от най-ново поколение. Най-важно е спазването на технологичната последователност." data-en="Latest-generation equipment. What matters most is honouring the technological sequence." data-ru="Оборудование новейшего поколения. Важнее всего — точное соблюдение технологии.">Уреди от най-ново поколение. Най-важно е спазването на технологичната последователност.</p>
+        </div>
+      </article>
+      <article class="disc-panel">
+        <img src="assets/process/vegetables.png" alt="" />
+        <div class="disc-panel__txt">
+          <span class="disc-panel__no">02</span>
+          <h3 data-bg="Зеленчуците" data-en="Vegetables" data-ru="Овощи">Зеленчуците</h3>
+          <p data-bg="Лично инспектирани от готвачите всеки ден. Залагаме на български производители." data-en="Hand-inspected by our chefs every day. Bulgarian growers first." data-ru="Повара лично проверяют их каждый день. Мы делаем ставку на болгарских производителей.">Лично инспектирани от готвачите всеки ден. Залагаме на български производители.</p>
+        </div>
+      </article>
+      <article class="disc-panel">
+        <img src="assets/process/meat.png" alt="" />
+        <div class="disc-panel__txt">
+          <span class="disc-panel__no">03</span>
+          <h3 data-bg="Месото" data-en="Meat" data-ru="Мясо">Месото</h3>
+          <p data-bg="Изключително строга селекция. Инспектира се от минимум трима души, преди да влезе в кухнята." data-en="Extremely strict selection. Inspected by at least three people before it enters the kitchen." data-ru="Исключительно строгий отбор. Прежде чем попасть на кухню, мясо проверяют минимум три человека.">Изключително строга селекция. Инспектира се от минимум трима души, преди да влезе в кухнята.</p>
+        </div>
+      </article>
+      <article class="disc-panel">
+        <img src="assets/process/spices.png" alt="" />
+        <div class="disc-panel__txt">
+          <span class="disc-panel__no">04</span>
+          <h3 data-bg="Подправките" data-en="Spices" data-ru="Специи">Подправките</h3>
+          <p data-bg="От България, Средиземноморието и Азия. Над 45% са директен внос от държавата производител." data-en="From Bulgaria, the Mediterranean and Asia. Over 45% imported directly from the country of origin." data-ru="Из Болгарии, Средиземноморья и Азии. Более 45% — прямой импорт из страны-производителя.">От България, Средиземноморието и Азия. Над 45% са директен внос от държавата производител.</p>
+        </div>
+      </article>
+      <article class="disc-panel">
+        <img src="assets/process/dairy.png" alt="" />
+        <div class="disc-panel__txt">
+          <span class="disc-panel__no">05</span>
+          <h3 data-bg="Млечните продукти" data-en="Dairy" data-ru="Молочные продукты">Млечните продукти</h3>
+          <p data-bg="Прясно и кисело мляко, кашкавал, сирена и сметана — в сърцето на нашата кухня." data-en="Fresh and sour milk, cheeses and cream — at the heart of our kitchen." data-ru="Молоко и йогурт, кашкавал, сыры и сливки — в самом сердце нашей кухни.">Прясно и кисело мляко, кашкавал, сирена и сметана — в сърцето на нашата кухня.</p>
+        </div>
+      </article>
+      <article class="disc-panel">
+        <img src="assets/process/oil.png" alt="" />
+        <div class="disc-panel__txt">
+          <span class="disc-panel__no">06</span>
+          <h3 data-bg="Мазнините" data-en="Fats" data-ru="Масла">Мазнините</h3>
+          <p data-bg="Безкомпромисни. Мазнината се сменя всеки ден и е различна за всяко ястие." data-en="Uncompromising. The frying oil is changed every day and is different for each dish." data-ru="Без компромиссов. Масло меняем каждый день, и для каждого блюда оно своё.">Безкомпромисни. Мазнината се сменя всеки ден и е различна за всяко ястие.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="dishes dark" id="dishes">
+    <div class="dishes__stage">
+      <div class="dishes__kicker"><span data-bg="Подреди си таблата" data-en="Build your tray" data-ru="Соберите свой поднос">Подреди си таблата</span></div>
+      <div class="tray-scene">
+        <div class="tray-panel">
+          <span class="tray-panel__step" id="tpStep">1 / 5</span>
+          <span class="tray-panel__cat" id="tpCat" data-bg="Започни · Салата" data-en="Start · Salad" data-ru="Начните · Салат">Започни · Салата</span>
+          <h3 class="tray-panel__name" id="tpName"></h3>
+          <span class="tray-panel__info" id="tpInfo"></span>
+        </div>
+        <div class="tray-steps" id="traySteps">
+          <img class="tray-step is-on" src="assets/tabla/beshamel-tabla-snezhanka-salata.jpg" alt="Снежанка салата на табла в Бешамел" />
+          <img class="tray-step" src="assets/tabla/beshamel-tabla-krem-supa-ot-tikva.jpg" alt="Крем супа от тиква с ементал на табла в Бешамел" />
+          <img class="tray-step" src="assets/tabla/beshamel-tabla-teleshki-gyuvech.jpg" alt="Гювеч с телешко месо на табла в Бешамел" />
+          <img class="tray-step" src="assets/tabla/beshamel-tabla-makaroni-na-furna.jpg" alt="Макарони на фурна на табла в Бешамел" />
+        </div>
+      </div>
+      <div class="dishes__label"><span data-bg="От салатата до десерта — 161 ястия, всяко с изписан състав, грамаж и калории." data-en="From salad to dessert — 161 dishes, each with its ingredients, grams and calories." data-ru="От салата до десерта — 161 блюдо, у каждого указаны состав, вес и калории.">От салатата до десерта — 161 ястия, всяко с изписан състав, грамаж и калории.</span></div>
+    </div>
+  </section>
+
+  <section class="dark" id="promo">
+    <div class="wrap reveal">
+      <div class="promo-band">
+        <div class="promo-band__txt">
+          <p class="kicker accent" data-bg="Всяка вечер" data-en="Every evening" data-ru="Каждый вечер">Всяка вечер</p>
+          <div class="promo-band__time" data-bg="След 17:00" data-en="After 17:00" data-ru="После 17:00">След 17:00</div>
+          <h2 class="h2" data-bg="Купи 1, вземи 2" data-en="Buy 1, get 2" data-ru="Купи 1 — получи 2">Купи 1, вземи 2</h2>
+          <p class="lead" data-bg="Всички ястия и салати. Прясното не се пази за утре." data-en="All dishes and salads. Fresh food is not kept for tomorrow." data-ru="Все блюда и салаты. Свежее не оставляют на завтра.">Всички ястия и салати. Прясното не се пази за утре.</p>
+          <a class="btn btn--solid" href="products.html" data-bg="Виж менюто" data-en="See the menu" data-ru="Смотреть меню">Виж менюто</a>
+        </div>
+        <div class="promo-band__visual">
+          <img class="promo-band__p2" src="assets/menu/m02.webp" alt="Салата от айсберг, рукола, авокадо и пармезан" />
+          <img class="promo-band__p1" src="assets/menu/m22.webp" alt="Гювеч с телешко месо" />
+          <span class="promo-band__badge">1+1</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fork light" id="fork">
+    <div class="wrap">
+      <p class="kicker" data-bg="Два начина да хапнеш" data-en="Two ways to eat" data-ru="Два способа поесть">Два начина да хапнеш</p>
+      <div class="fork__grid">
+        <article class="fork__card reveal">
+          <h3 data-bg="Седни и си Хапни" data-en="Sit & Eat" data-ru="Посидеть и поесть">Седни и си Хапни</h3>
+          <p data-bg="Заведение на самообслужване. Богат избор от ястия с усещане за домашен уют." data-en="A self-service restaurant. A rich choice of dishes with a feeling of home comfort." data-ru="Ресторан самообслуживания. Богатый выбор блюд с ощущением домашнего уюта.">Заведение на самообслужване. Богат избор от ястия с усещане за домашен уют.</p>
+          <a class="link" href="locations.html" data-bg="Намери заведение →" data-en="Find a restaurant →" data-ru="Найти ресторан →">Намери заведение →</a>
+        </article>
+        <article class="fork__card reveal">
+          <h3 data-bg="Ела и си Вземи" data-en="Come & Take" data-ru="Зайти и забрать">Ела и си Вземи</h3>
+          <p data-bg="ToGo — шоково охладени ястия без консерванти, за дома или офиса, в удобна опаковка." data-en="ToGo — blast-chilled meals with no preservatives, for home or office, neatly packed." data-ru="ToGo — блюда шокового охлаждения без консервантов, для дома и офиса, в удобной упаковке.">ToGo — шоково охладени ястия без консерванти, за дома или офиса, в удобна опаковка.</p>
+          <a class="link" href="togo.html" data-bg="Към ToGo →" data-en="To ToGo →" data-ru="К ToGo →">Към ToGo →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark" id="story-quote">
+    <div class="wrap reveal">
+      <div class="quote">
+        <p data-bg="Времето и опитът ни научиха да ценим истински важните неща." data-en="Time and experience taught us to value the things that truly matter." data-ru="Время и опыт научили нас ценить по-настоящему важные вещи.">Времето и опитът ни научиха да ценим истински важните неща.</p>
+        <cite data-bg="Философията на Бешамел" data-en="The Beshamel philosophy" data-ru="Философия Бешамел">Философията на Бешамел</cite>
+      </div>
+      <div style="text-align:center;margin-top:2.2rem">
+        <a class="link" href="about.html" data-bg="Нашата история →" data-en="Our story →" data-ru="Наша история →">Нашата история →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey dark" id="map">
+    <div class="jr-cine" aria-hidden="true"><canvas id="jrCine"></canvas><div class="jr-cine__veil"></div></div>
+    <div class="wrap reveal">
+      <p class="kicker accent" data-bg="Нашият път" data-en="Our journey" data-ru="Наш путь">Нашият път</p>
+      <h2 class="h2" data-bg="Светлините на София" data-en="The lights of Sofia" data-ru="Огни Софии">Светлините на София</h2>
+      <p class="lead" data-bg="От 2019 насам — една централна кухня и шест заведения из София. Следвай пътя — светлините пламват една по една." data-en="Since 2019 — one central kitchen and six restaurants across Sofia. Follow the road — the lights come on one by one." data-ru="С 2019 года — одна центральная кухня и шесть ресторанов по всей Софии. Следуйте по дороге — огни зажигаются один за другим.">От 2019 насам — една централна кухня и шест заведения из София. Следвай пътя — светлините пламват една по една.</p>
+    </div>
+    <div class="jr" id="jr">
+      <svg class="jr__svg" viewBox="0 0 720 1560" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="jrGlow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="7"/>
+          </filter>
+        </defs>
+        <!-- едва доловима улична решетка на заден план -->
+        <g class="jr__grid">
+          <path d="M60 20V1540M180 20V1540M300 20V1540M420 20V1540M540 20V1540M660 20V1540" vector-effect="non-scaling-stroke"/>
+          <path d="M20 140H700M20 400H700M20 660H700M20 920H700M20 1180H700M20 1440H700" vector-effect="non-scaling-stroke"/>
+          <path class="jr__rays" d="M360 70L40 1520M360 70L680 1520" vector-effect="non-scaling-stroke"/>
+        </g>
+        <!-- пътят: тих ориентир + сияние + изчертаваща се линия (d се задава от main.js) -->
+        <path class="jr__road" id="jrRoad" d="M360 70" vector-effect="non-scaling-stroke"/>
+        <path class="jr__glowline" id="jrGlowLine" d="M360 70" filter="url(#jrGlow)"/>
+        <path class="jr__draw" id="jrPath" d="M360 70"
+          data-d-desktop="M360 70C360 190 215 200 215 315C215 430 505 425 505 540C505 655 205 655 205 770C205 885 515 885 515 1000C515 1115 215 1115 215 1230C215 1345 445 1345 445 1460"
+          data-d-mobile="M360 70C360 190 300 200 300 315C300 430 420 425 420 540C420 655 300 655 300 770C300 885 420 885 420 1000C420 1115 300 1115 300 1230C300 1290 390 1310 390 1370"/>
+        <g id="jrParticles"></g>
+      </svg>
+      <div class="jr__hub" id="jrHub">
+        <i class="jr__hub-core" aria-hidden="true"></i>
+        <div class="jr__hub-label">
+          <h3 data-bg="Централната кухня — сърцето" data-en="The central kitchen — the heart" data-ru="Центральная кухня — сердце">Централната кухня — сърцето</h3>
+          <p data-bg="оттук тръгва всичко, всяка сутрин" data-en="everything sets out from here, every morning" data-ru="отсюда всё отправляется каждое утро">оттук тръгва всичко, всяка сутрин</p>
+        </div>
+      </div>
+      <article class="jr__stop jr__stop--l" data-x="215" data-xm="300" data-y="315">
+        <i class="jr__dot" aria-hidden="true"></i>
+        <div class="jr__card">
+          <div class="jr__year">2019</div>
+          <h3 data-bg="Бешамел 1" data-en="Beshamel 1" data-ru="Бешамел 1">Бешамел 1</h3>
+          <p data-bg="бул. Христо Ботев 16А — първото заведение, 21 места." data-en="16A Hristo Botev Blvd — the first restaurant, 21 seats." data-ru="бул. Христо Ботев 16А — первый ресторан, 21 место.">бул. Христо Ботев 16А — първото заведение, 21 места.</p>
+        </div>
+      </article>
+      <article class="jr__stop jr__stop--r" data-x="505" data-xm="420" data-y="540">
+        <i class="jr__dot" aria-hidden="true"></i>
+        <div class="jr__card">
+          <div class="jr__year">2019</div>
+          <h3 data-bg="Бешамел 2" data-en="Beshamel 2" data-ru="Бешамел 2">Бешамел 2</h3>
+          <p data-bg="бул. Христо Ботев 15 — точно отсреща, с храна и за из път." data-en="15 Hristo Botev Blvd — right across the street, with food to take away." data-ru="бул. Христо Ботев 15 — прямо напротив, с едой и навынос.">бул. Христо Ботев 15 — точно отсреща, с храна и за из път.</p>
+        </div>
+      </article>
+      <article class="jr__stop jr__stop--l" data-x="205" data-xm="300" data-y="770">
+        <i class="jr__dot" aria-hidden="true"></i>
+        <div class="jr__card">
+          <div class="jr__year">2021</div>
+          <h3 data-bg="Бешамел 3" data-en="Beshamel 3" data-ru="Бешамел 3">Бешамел 3</h3>
+          <p data-bg="бул. България 49А, Мотописта — 40 места, най-големият ни салон." data-en="49A Bulgaria Blvd, Motopista — 40 seats, our largest room." data-ru="бул. България 49А, Мотописта — 40 мест, наш самый большой зал.">бул. България 49А, Мотописта — 40 места, най-големият ни салон.</p>
+        </div>
+      </article>
+      <article class="jr__stop jr__stop--r" data-x="515" data-xm="420" data-y="1000">
+        <i class="jr__dot" aria-hidden="true"></i>
+        <div class="jr__card">
+          <div class="jr__year">2022</div>
+          <h3 data-bg="Бешамел 4" data-en="Beshamel 4" data-ru="Бешамел 4">Бешамел 4</h3>
+          <p data-bg="ул. Д-р Атанас Москов 459 — стигаме до Младост 4." data-en="459 Dr Atanas Moskov St — we reach Mladost 4." data-ru="ул. Д-р Атанас Москов 459 — мы добрались до Младост 4.">ул. Д-р Атанас Москов 459 — стигаме до Младост 4.</p>
+        </div>
+      </article>
+      <article class="jr__stop jr__stop--l" data-x="215" data-xm="300" data-y="1230">
+        <i class="jr__dot" aria-hidden="true"></i>
+        <div class="jr__card">
+          <div class="jr__year">2023</div>
+          <h3 data-bg="Бешамел 5" data-en="Beshamel 5" data-ru="Бешамел 5">Бешамел 5</h3>
+          <p data-bg="ул. Цар Иван Асен II 36." data-en="36 Tsar Ivan Asen II St." data-ru="ул. Цар Иван Асен II 36.">ул. Цар Иван Асен II 36.</p>
+        </div>
+      </article>
+      <article class="jr__stop jr__stop--r" data-x="445" data-xm="390" data-y="1460" data-ym="1370">
+        <i class="jr__dot" aria-hidden="true"></i>
+        <div class="jr__card">
+          <div class="jr__year">2024</div>
+          <h3 data-bg="Бешамел 6" data-en="Beshamel 6" data-ru="Бешамел 6">Бешамел 6</h3>
+          <p data-bg="ул. Йерусалим 8 — най-новото заведение." data-en="8 Jerusalem St — the newest one." data-ru="ул. Йерусалим 8 — самый новый ресторан.">ул. Йерусалим 8 — най-новото заведение.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="light" id="partners-strip" style="background:var(--canvas-2)">
+    <div class="wrap reveal">
+      <p class="kicker" data-bg="Доверени партньори" data-en="Trusted partners" data-ru="Проверенные партнёры">Доверени партньори</p>
+      <div class="logo-marquee" aria-label="Партньори на Бешамел">
+        <div class="logo-marquee__track">
+          <span class="lm-chip"><img src="assets/partners/p01.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p02.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p03.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p04.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p06.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p07.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p08.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p09.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p10.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p11.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip"><img src="assets/partners/p12.png" alt="Лого на партньор" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p01.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p02.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p03.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p04.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p06.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p07.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p08.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p09.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p10.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p11.png" alt="" /></span>
+          <span class="lm-chip" aria-hidden="true"><img src="assets/partners/p12.png" alt="" /></span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.2rem">
+        <a class="link" href="partners.html" data-bg="Всички партньори →" data-en="All partners →" data-ru="Все партнёры →">Всички партньори →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" id="stats-band" style="background:var(--surface)">
+    <div class="wrap reveal">
+      <p class="kicker accent" data-bg="Бешамел днес" data-en="Beshamel today" data-ru="Бешамел сегодня">Бешамел днес</p>
+      <div class="stats">
+        <div class="stat"><b>2019</b><span data-bg="годината, в която започнахме" data-en="the year we started" data-ru="год, когда мы начали">годината, в която започнахме</span></div>
+        <div class="stat"><b>6</b><span data-bg="заведения в София" data-en="restaurants in Sofia" data-ru="ресторанов в Софии">заведения в София</span></div>
+        <div class="stat"><b>161</b><span data-bg="ястия в каталога" data-en="dishes in the catalogue" data-ru="блюдо в каталоге">ястия в каталога</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="invite dark" id="invite">
+    <div class="wrap reveal">
+      <img class="invite__logo" src="assets/logo-white.png" alt="Бешамел" />
+      <h2 class="invite__title" data-bg="Заповядай." data-en="Come in." data-ru="Добро пожаловать.">Заповядай.</h2>
+      <div class="invite__doors">
+        <a class="door" href="franchise.html"><b data-bg="Франчайз" data-en="Franchise" data-ru="Франшиза">Франчайз</b><span data-bg="Стани партньор" data-en="Become a partner" data-ru="Станьте партнёром">Стани партньор</span></a>
+        <a class="door" href="careers.html"><b data-bg="Кариери" data-en="Careers" data-ru="Карьера">Кариери</b><span data-bg="Стани част от семейството" data-en="Join the family" data-ru="Станьте частью семьи">Стани част от семейството</span></a>
+        <a class="door" href="partners.html"><b data-bg="Партньори" data-en="Partners" data-ru="Партнёры">Партньори</b><span data-bg="Доставчиците зад храната" data-en="The suppliers behind the food" data-ru="Кто стоит за нашей едой">Доставчиците зад храната</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand-col">
+        <img src="assets/logo-white.png" alt="Бешамел" class="footer__logo" />
+        <p data-bg="Домашна кухня, приготвена прясно всеки ден. София · от 2019." data-en="Home cooking, made fresh every day. Sofia · since 2019." data-ru="Домашняя кухня, приготовленная свежей каждый день. София · с 2019 года.">Домашна кухня, приготвена прясно всеки ден. София · от 2019.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61570030846957" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/beshamelfoods/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Разгледай">
+        <h4 data-bg="Разгледай" data-en="Explore" data-ru="Разделы">Разгледай</h4>
+        <a href="index.html" data-bg="Начало" data-en="Home" data-ru="Главная">Начало</a>
+        <a href="about.html" data-bg="За нас" data-en="About us" data-ru="О нас">За нас</a>
+        <a href="products.html" data-bg="Продукти" data-en="Products" data-ru="Продукция">Продукти</a>
+        <a href="togo.html" data-bg="Бешамел ToGo" data-en="Beshamel ToGo" data-ru="Бешамел ToGo">Бешамел ToGo</a>
+        <a href="locations.html" data-bg="Локации" data-en="Locations" data-ru="Локации">Локации</a>
+      </nav>
+      <nav class="footer__col" aria-label="Присъедини се">
+        <h4 data-bg="Присъедини се" data-en="Join us" data-ru="Присоединяйтесь">Присъедини се</h4>
+        <a href="franchise.html" data-bg="Франчайз" data-en="Franchise" data-ru="Франшиза">Франчайз</a>
+        <a href="careers.html" data-bg="Кариери" data-en="Careers" data-ru="Карьера">Кариери</a>
+        <a href="partners.html" data-bg="Партньори" data-en="Partners" data-ru="Партнёры">Партньори</a>
+        <a href="contact.html" data-bg="Контакти" data-en="Contact" data-ru="Контакты">Контакти</a>
+      </nav>
+      <div class="footer__col">
+        <h4 data-bg="Поръчки и връзка" data-en="Ordering &amp; contact" data-ru="Заказы и связь">Поръчки и връзка</h4>
+        <p class="footer__soon"><span data-bg="Онлайн поръчки" data-en="Online ordering" data-ru="Онлайн-заказы">Онлайн поръчки</span><em data-bg="скоро" data-en="soon" data-ru="скоро">скоро</em></p>
+        <a href="products.html" data-bg="Дневно меню" data-en="Daily menu" data-ru="Меню дня">Дневно меню</a>
+        <a href="mailto:contact@beshamel.bg">contact@beshamel.bg</a>
+        <a href="tel:+359885101035">0885 10 10 35</a>
+        <p class="footer__addr" data-bg="6 заведения в София" data-en="6 restaurants in Sofia" data-ru="6 ресторанов в Софии">6 заведения в София</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span data-bg="© 2026 Да-За ООД · Всички права запазени" data-en="© 2026 Da-Za OOD · All rights reserved" data-ru="© 2026 Да-За ООД · Все права защищены">© 2026 Да-За ООД · Всички права запазени</span>
+      <span class="footer__legal">
+        <a href="privacy.html" data-bg="Политика за поверителност" data-en="Privacy policy" data-ru="Политика конфиденциальности">Политика за поверителност</a>
+        <a href="terms.html" data-bg="Условия за ползване" data-en="Terms of use" data-ru="Условия использования">Условия за ползване</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="promo-data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

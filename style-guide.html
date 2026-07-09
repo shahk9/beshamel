@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beshamel Design System — Style Guide</title>
+<meta name="description" content="Living style guide for the Beshamel design system: colour roles, type scale, components, elevation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html"><img src="assets/logo-white.png" alt="Бешамел" /></a>
+  <nav class="nav__links">
+    <a href="about.html" data-bg="За нас" data-en="About">За нас</a>
+    <a href="products.html" data-bg="Продукти" data-en="Products">Продукти</a>
+    <a href="togo.html" data-bg="ToGo" data-en="ToGo">ToGo</a>
+    <a href="franchise.html" data-bg="Франчайз" data-en="Franchise">Франчайз</a>
+    <a href="careers.html" data-bg="Кариери" data-en="Careers">Кариери</a>
+    <a href="contact.html" data-bg="Контакти" data-en="Contact">Контакти</a>
+  </nav>
+  <div class="nav__right">
+    <button class="lang" id="lang">
+      <span data-l="bg" class="lang__opt is-active">BG</span><span class="lang__sep">/</span><span data-l="en" class="lang__opt">EN</span><span class="lang__sep">/</span><span data-l="ru" class="lang__opt">RU</span>
+    </button>
+    <a class="btn btn--pill" href="products.html" data-bg="Дневно меню" data-en="Daily menu">Дневно меню</a>
+  </div>
+</header>
+
+<main class="page">
+
+  <section class="phero dark">
+    <div class="phero__inner">
+      <p class="kicker accent">Beshamel Design System · v1</p>
+      <h1>Системата зад историята</h1>
+      <p>Топъл near-black, крем, шафран и храна, изплуваща от мрака — структурата на Starbucks, идентичността на Бешамел.</p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <p class="kicker accent">01 · Colour roles</p>
+      <h2 class="h2 h2--dark">Brand tiers &amp; accents</h2>
+      <p class="lead">Four warm tiers mapped to roles. Saffron is the only general accent; gold is reserved for heritage/ceremony.</p>
+      <div class="sg-swatches" style="margin-top:2rem">
+        <div class="sg-swatch"><div class="chip-bar" style="background:#3c3935"></div><div class="meta"><b>Stage</b><span>--brand-stage #3c3935</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#2a2724"></div><div class="meta"><b>Ink</b><span>--brand-ink #2a2724</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#5f544b"></div><div class="meta"><b>Brown</b><span>--brand-brown #5f544b</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#c2b09f"></div><div class="meta"><b>Tan</b><span>--brand-tan #c2b09f</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#f9ae4e"></div><div class="meta"><b>Saffron · accent</b><span>--accent #f9ae4e</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#bba157"></div><div class="meta"><b>Gold · ceremony</b><span>--gold #bba157</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#f3ece1"></div><div class="meta"><b>Canvas</b><span>--canvas #f3ece1</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#ffffff"></div><div class="meta"><b>Surface</b><span>--surface #ffffff</span></div></div>
+        <div class="sg-swatch"><div class="chip-bar" style="background:#e20613"></div><div class="meta"><b>Promo · reserved</b><span>--promo #e20613</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <p class="kicker accent">Text on the dark stage</p>
+      <h2 class="h2">Primary on-dark text</h2>
+      <p class="lead" style="color:var(--on-dark-soft)">Secondary on-dark text sits at 72% — used for captions and supporting copy on the warm-black bands and the footer.</p>
+      <span class="badge-gold">От 2019</span>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <p class="kicker accent">02 · Typography</p>
+      <h2 class="h2 h2--dark">The type scale</h2>
+      <div style="margin-top:2rem;display:grid;gap:1.1rem">
+        <div style="font-family:var(--f-display);font-weight:700;font-size:var(--step-6);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight)">Бешамел</div>
+        <div style="font-family:var(--f-display);font-weight:600;font-size:var(--step-5);line-height:var(--lh-tight)">Домашно. С отношение.</div>
+        <div style="font-family:var(--f-display);font-weight:600;font-size:var(--step-4)">Невидимият стандарт зад един обяд</div>
+        <div style="font-family:var(--f-display);font-weight:600;font-size:var(--step-3)">Различно меню всеки ден</div>
+        <div class="t-serif" style="font-size:var(--step-4);font-style:italic;color:var(--brown)">Историята на Бешамел — story serif (Lora)</div>
+        <div style="font-size:var(--step-1);color:var(--text)">Lead — вкусна домашна храна, приготвена прясно всеки ден.</div>
+        <div style="font-size:var(--step-0);color:var(--text)">Body — основен текст, 16px, line-height 1.6, топъл near-black, не чисто черно.</div>
+        <div style="font-size:var(--step--1);color:var(--text-soft);text-transform:uppercase;letter-spacing:var(--tracking-caps)">Caption · kicker · micro</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <p class="kicker accent">02b · Choose the typeface</p>
+      <h2 class="h2 h2--dark">Three directions — pick by eye</h2>
+      <p class="lead">The biggest visible lever. Same Beshamel words, three identities. Tell me the number and I'll apply it across the whole site.</p>
+      <div class="sg-type">
+        <article>
+          <span class="tag">1 · Heritage condensed (current — Myriad stand-in)</span>
+          <div class="big" style="font-family:'Oswald',sans-serif">Бешамел</div>
+          <div class="sub" style="font-family:'Oswald',sans-serif;font-weight:600">Домашно. С отношение.</div>
+          <div class="bd" style="font-family:'Open Sans',sans-serif">Вкусна домашна храна, приготвена прясно всеки ден.</div>
+        </article>
+        <article>
+          <span class="tag">2 · Editorial — serif display + grotesque body</span>
+          <div class="big" style="font-family:'Playfair Display',serif">Бешамел</div>
+          <div class="sub" style="font-family:'Playfair Display',serif;font-weight:600">Домашно. С отношение.</div>
+          <div class="bd" style="font-family:'Inter',sans-serif">Вкусна домашна храна, приготвена прясно всеки ден.</div>
+        </article>
+        <article>
+          <span class="tag">3 · Modern minimal — single grotesque</span>
+          <div class="big" style="font-family:'Inter',sans-serif;letter-spacing:-.02em">Бешамел</div>
+          <div class="sub" style="font-family:'Inter',sans-serif;font-weight:600;letter-spacing:-.01em">Домашно. С отношение.</div>
+          <div class="bd" style="font-family:'Inter',sans-serif">Вкусна домашна храна, приготвена прясно всеки ден.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="light" style="background:var(--canvas-2)">
+    <div class="wrap">
+      <p class="kicker accent">03 · Buttons &amp; controls</p>
+      <h2 class="h2 h2--dark">Full-pill, scale(.96) on press</h2>
+      <div class="sg-row" style="margin-top:1.6rem">
+        <a class="btn btn--solid" href="#">Виж менюто</a>
+        <a class="btn btn--pill" href="#">Дневно меню</a>
+        <span class="badge-gold">Франчайз</span>
+        <span class="chip">Шопска салата</span>
+        <a class="cat" href="#">Салати</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <p class="kicker accent">Buttons on dark</p>
+      <div class="sg-row" style="margin-top:1rem">
+        <a class="btn btn--solid" href="#">Поръчай</a>
+        <a class="btn btn--ghost" href="#">Научи повече</a>
+      </div>
+      <p class="lead" style="margin-top:1.4rem;color:var(--on-dark-soft)">Every interactive control has a saffron <code>:focus-visible</code> ring and compresses on <code>:active</code>.</p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <p class="kicker accent">04 · Cards &amp; food tiles</p>
+      <h2 class="h2 h2--dark">Whisper-soft, layered elevation</h2>
+      <div class="grid grid--3" style="margin-top:1.8rem">
+        <div class="card"><span class="num">01</span><h3>Технологията</h3><p>Уреди от най-ново поколение и стриктна технологична последователност.</p></div>
+        <div class="card"><span class="num">02</span><h3>Месото</h3><p>Изключително строга селекция, инспектирана от минимум трима души.</p></div>
+        <div class="card"><span class="num">03</span><h3>Подправките</h3><p>Над 45% директен внос от държавата производител.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <p class="kicker accent">Photographed product on black</p>
+      <div class="dishgrid" style="margin-top:1.6rem">
+        <div class="dishcard"><img src="assets/dishes/01.webp" alt="Гръцка салата" /><b>Гръцка салата</b><span>Greek salad</span></div>
+        <div class="dishcard"><img src="assets/dishes/04.webp" alt="Телешко тас кебап" /><b>Телешко тас кебап</b><span>Veal tas kebab</span></div>
+        <div class="dishcard"><img src="assets/dishes/09.webp" alt="Кашкавал пане" /><b>Кашкавал пане</b><span>Breaded yellow cheese</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <p class="kicker accent">05 · Elevation</p>
+      <h2 class="h2 h2--dark">Layered, low-alpha — never one heavy drop</h2>
+      <div class="sg-row" style="margin-top:1.8rem">
+        <div class="sg-shadow" style="box-shadow:var(--shadow-card)">card</div>
+        <div class="sg-shadow" style="box-shadow:var(--shadow-nav)">nav</div>
+        <div class="sg-shadow" style="box-shadow:var(--shadow-float)">float</div>
+      </div>
+      <p class="lead" style="margin-top:1.6rem">Radii: <code>6 / 12 / 16 / 50px pill / 50% round</code>. Spacing: 8-pt rem scale, <code>--space-3 (16px)</code> the universal unit. The floating saffron CTA is live — bottom-right.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand-col">
+        <img src="assets/logo-white.png" alt="Бешамел" class="footer__logo" />
+        <p data-bg="Домашна кухня, приготвена прясно всеки ден. София · от 2019." data-en="Home cooking, made fresh every day. Sofia · since 2019.">Домашна кухня, приготвена прясно всеки ден. София · от 2019.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61570030846957" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/beshamelfoods/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Разгледай">
+        <h4 data-bg="Разгледай" data-en="Explore">Разгледай</h4>
+        <a href="index.html" data-bg="Начало" data-en="Home">Начало</a>
+        <a href="about.html" data-bg="За нас" data-en="About us">За нас</a>
+        <a href="products.html" data-bg="Продукти" data-en="Products">Продукти</a>
+        <a href="togo.html" data-bg="Бешамел ToGo" data-en="Beshamel ToGo">Бешамел ToGo</a>
+        <a href="locations.html" data-bg="Локации" data-en="Locations">Локации</a>
+      </nav>
+      <nav class="footer__col" aria-label="Присъедини се">
+        <h4 data-bg="Присъедини се" data-en="Join us">Присъедини се</h4>
+        <a href="franchise.html" data-bg="Франчайз" data-en="Franchise">Франчайз</a>
+        <a href="careers.html" data-bg="Кариери" data-en="Careers">Кариери</a>
+        <a href="partners.html" data-bg="Партньори" data-en="Partners">Партньори</a>
+        <a href="contact.html" data-bg="Контакти" data-en="Contact">Контакти</a>
+      </nav>
+      <div class="footer__col">
+        <h4 data-bg="Поръчки и връзка" data-en="Ordering &amp; contact">Поръчки и връзка</h4>
+        <p class="footer__soon"><span data-bg="Онлайн поръчки" data-en="Online ordering">Онлайн поръчки</span><em data-bg="скоро" data-en="soon">скоро</em></p>
+        <a href="products.html" data-bg="Дневно меню" data-en="Daily menu">Дневно меню</a>
+        <a href="mailto:contact@beshamel.bg">contact@beshamel.bg</a>
+        <a href="tel:+359885101035">0885 10 10 35</a>
+        <p class="footer__addr" data-bg="6 заведения в София" data-en="6 restaurants in Sofia">6 заведения в София</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span data-bg="© 2026 Да-За ООД · Всички права запазени" data-en="© 2026 Da-Za OOD · All rights reserved">© 2026 Да-За ООД · Всички права запазени</span>
+      <span class="footer__legal">
+        <a href="privacy.html" data-bg="Политика за поверителност" data-en="Privacy policy">Политика за поверителност</a>
+        <a href="terms.html" data-bg="Условия за ползване" data-en="Terms of use">Условия за ползване</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

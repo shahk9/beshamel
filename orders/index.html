@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Бешамел · Поръчки</title>
+  <meta name="theme-color" content="#3c3935" />
+  <meta name="description" content="Поръчай храна от Бешамел — избери обект, разгледай менюто и вземи готовата поръчка." />
+
+  <!-- Шрифтове: Playfair Display (заглавия) + Inter (текст/UI), заредени по същия
+       начин като витрината (preconnect + css2). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="orders.css?v=4" />
+</head>
+<body>
+  <!-- ХЕДЪР: лого, избран обект, превключвател на език -->
+  <header class="hdr">
+    <a class="hdr__logo" href="#location" aria-label="Бешамел — начало">
+      <img src="assets/logo-white.png" alt="Бешамел" />
+    </a>
+
+    <div class="hdr__loc" id="hdrLoc" hidden>
+      <button type="button" class="hdr__loc-btn" id="hdrLocBtn">
+        <span class="hdr__loc-name" id="hdrLocName"></span>
+        <span class="hdr__loc-change" data-i18n="changeLoc"></span>
+      </button>
+      <!-- дискретен линк към входния екран „Как ще поръчаш?" -->
+      <button type="button" class="hdr__home" id="hdrHomeBtn" data-i18n="startHome"></button>
+    </div>
+
+    <!-- Акаунт: иконка човече; при логнат клиент app.js слага аватар/инициал -->
+    <button type="button" class="hdr__acc" id="hdrAccBtn" aria-label="Акаунт"></button>
+
+    <div class="lang" id="lang" role="group" aria-label="Език / Language">
+      <button type="button" class="lang__opt" data-lang="bg">BG</button>
+      <span class="lang__sep">/</span>
+      <button type="button" class="lang__opt" data-lang="en">EN</button>
+      <span class="lang__sep">/</span>
+      <button type="button" class="lang__opt" data-lang="ru">RU</button>
+    </div>
+  </header>
+
+  <!-- ГЛАВЕН КОНТЕЙНЕР — всеки екран се рендира тук от app.js -->
+  <main id="view" class="view" role="main"></main>
+
+  <!-- STICKY КОЛИЧКА (мобилна лента отдолу) -->
+  <div class="cartbar" id="cartbar" hidden>
+    <button type="button" class="cartbar__btn" id="cartbarBtn">
+      <span class="cartbar__count" id="cartbarCount">0</span>
+      <span class="cartbar__label" data-i18n="viewCart"></span>
+      <span class="cartbar__total" id="cartbarTotal"></span>
+      <span class="cartbar__go"><span data-i18n="continue"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </button>
+  </div>
+
+  <script src="config.js?v=4"></script>
+  <script src="app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Продукти — Бешамел</title>
+<meta name="description" content="Продуктите на Бешамел — пълният каталог с грамаж, калории и цени. Различно меню всеки ден." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="index.html"><img src="assets/logo-white.png" alt="Бешамел" /></a>
+  <nav class="nav__links">
+    <a href="about.html" data-bg="За нас" data-en="About" data-ru="О нас">За нас</a>
+    <a href="products.html" data-bg="Продукти" data-en="Products" data-ru="Продукты">Продукти</a>
+    <a href="togo.html" data-bg="ToGo" data-en="ToGo" data-ru="ToGo">ToGo</a>
+    <a href="franchise.html" data-bg="Франчайз" data-en="Franchise" data-ru="Франшиза">Франчайз</a>
+    <a href="careers.html" data-bg="Кариери" data-en="Careers" data-ru="Карьера">Кариери</a>
+    <a href="contact.html" data-bg="Контакти" data-en="Contact" data-ru="Контакты">Контакти</a>
+  </nav>
+  <div class="nav__right">
+    <a class="btn btn--solid nav__order js-order-link" href="#" data-bg="Поръчай онлайн" data-en="Order online" data-ru="Заказать онлайн">Поръчай онлайн</a>
+    <button class="lang" id="lang">
+      <span data-l="bg" class="lang__opt is-active">BG</span><span class="lang__sep">/</span><span data-l="en" class="lang__opt">EN</span><span class="lang__sep">/</span><span data-l="ru" class="lang__opt">RU</span>
+    </button>
+    <a class="btn btn--pill" href="products.html" data-bg="Дневно меню" data-en="Daily menu" data-ru="Меню дня">Дневно меню</a>
+  </div>
+</header>
+<main class="page">
+<section class="phero dark">
+  <img class="phero__bg" src="assets/interiors/2.jpg" alt="" />
+  <div class="phero__veil"></div>
+  <div class="phero__inner">
+    <p class="kicker accent" data-bg="Каталогът" data-en="The catalogue" data-ru="Каталог">Каталогът</p>
+    <h1 data-bg="Продуктите на Бешамел" data-en="Beshamel products" data-ru="Продукты Бешамел">Продуктите на Бешамел</h1>
+    <p data-bg="Всяко ястие с изписан състав, грамаж, калории и цена. Менюто е различно всеки ден — и вече се поръчва онлайн." data-en="Every dish with its ingredients, grams, calories and price. A different menu every day — and now available to order online." data-ru="У каждого блюда указаны состав, вес, калории и цена. Меню меняется каждый день — и теперь его можно заказать онлайн.">Всяко ястие с изписан състав, грамаж, калории и цена. Менюто е различно всеки ден — и вече се поръчва онлайн.</p>
+    <div style="margin-top:1.6rem"><a class="btn btn--solid js-order-link" href="#" data-bg="Поръчай онлайн сега" data-en="Order online now" data-ru="Заказать онлайн сейчас">Поръчай онлайн сега</a></div>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap">
+    <p class="lead reveal" data-bg="Менюто е различно всеки ден — микс от сезонни ястия и постоянни любимци, всички приготвени в деня на предлагането им." data-en="The menu is different every day — a mix of seasonal dishes and constant favourites, all prepared on the day they are served." data-ru="Меню меняется каждый день — микс сезонных блюд и постоянных фаворитов, и всё готовится в день подачи.">Менюто е различно всеки ден — микс от сезонни ястия и постоянни любимци, всички приготвени в деня на предлагането им.</p>
+    <div class="cats reveal">
+      <a class="cat" href="#salati" data-bg="Салати" data-en="Salads" data-ru="Салаты">Салати</a>
+      <a class="cat" href="#supi" data-bg="Супи" data-en="Soups" data-ru="Супы">Супи</a>
+      <a class="cat" href="#bez-meso" data-bg="Ястия без месо и гарнитури" data-en="Meat-free &amp; sides" data-ru="Блюда без мяса и гарниры">Ястия без месо и гарнитури</a>
+      <a class="cat" href="#meso-riba" data-bg="Ястия с месо и риба" data-en="Meat &amp; fish" data-ru="Блюда из мяса и рыбы">Ястия с месо и риба</a>
+      <a class="cat" href="#deserti" data-bg="Десерти" data-en="Desserts" data-ru="Десерты">Десерти</a>
+      <a class="cat" href="#menu-note" data-bg="Хляб, напитки и добавки" data-en="Bread, drinks &amp; extras" data-ru="Хлеб, напитки и добавки">Хляб, напитки и добавки</a>
+      <a class="cat" href="togo.html" data-bg="ToGo" data-en="ToGo" data-ru="ToGo">ToGo</a>
+    </div>
+  </div>
+</section>
+
+<section class="light" style="background:var(--surface)">
+  <div class="wrap reveal">
+    <p class="kicker accent" data-bg="Тази седмица на промоция" data-en="On promo this week" data-ru="На этой неделе по акции">Тази седмица на промоция</p>
+    <p class="wpromo-week"><span class="js-wpweek"></span></p>
+    <div class="dishgrid dishgrid--3 js-wpromos"></div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap reveal">
+    <p class="kicker accent" data-bg="Менюто" data-en="The menu" data-ru="Меню">Менюто</p>
+    <h2 class="h2" data-bg="Пълна прозрачност — грамаж, калории, цена" data-en="Full transparency — grams, calories, price" data-ru="Полная прозрачность — вес, калории, цена">Пълна прозрачност — грамаж, калории, цена</h2>
+    <p class="lead" data-bg="Всяко ястие с изписан грамаж, калории и цена. Менюто се сменя всеки ден — това са част от постоянните любимци." data-en="Every dish lists its grams, calories and price. The menu changes daily — these are some of the permanent favourites." data-ru="У каждого блюда указаны вес, калории и цена. Меню меняется каждый день — здесь лишь часть постоянных фаворитов.">Всяко ястие с изписан грамаж, калории и цена. Менюто се сменя всеки ден — това са част от постоянните любимци.</p>
+
+    <div class="menu-cat-head" id="salati"><h3 data-bg="Салати" data-en="Salads" data-ru="Салаты">Салати</h3></div>
+    <div class="dishgrid">
+      <div class="dishcard"><img src="assets/menu/m01.webp" alt="Овчарска салата" /><b data-bg="Овчарска салата" data-en="Shepherd's salad" data-ru="Овчарский салат">Овчарска салата</b><span class="info"><span>150гр./250гр.</span><span>186кал./311кал.</span><span class="price">2,70/3,50 € · 5,28/6,85 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m02.webp" alt="Салата от айсберг, рукола, авокадо и пармезан" /><b data-bg="Салата от айсберг, рукола, авокадо и пармезан" data-en="Iceberg, rocket, avocado &amp; parmesan" data-ru="Салат с айсбергом, рукколой, авокадо и пармезаном">Салата от айсберг, рукола, авокадо и пармезан</b><span class="info"><span>150гр./250гр.</span><span>142кал./237кал.</span><span class="price">2,70/3,50 € · 5,28/6,85 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m03.webp" alt="Табули" /><b data-bg="Табули" data-en="Tabbouleh" data-ru="Табуле">Табули</b><span class="info"><span>150гр./250гр.</span><span>190кал./316кал.</span><span class="price">2,70/3,50 € · 5,28/6,85 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m04.webp" alt="Катък с печени чушки" /><b data-bg="Катък с печени чушки" data-en="Katak with roasted peppers" data-ru="Катык с печёным перцем">Катък с печени чушки</b><span class="info"><span>150гр.</span><span>267кал.</span><span class="price">2,70 € / 5,28 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m05.webp" alt="Снежанка салата" /><b data-bg="Снежанка салата" data-en="Snezhanka yogurt salad" data-ru="Салат «Снежанка»">Снежанка салата</b><span class="info"><span>150гр.</span><span>169кал.</span><span class="price">2,70 € / 5,28 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m06.webp" alt="Картофена салата" /><b data-bg="Картофена салата" data-en="Potato salad" data-ru="Картофельный салат">Картофена салата</b><span class="info"><span>150гр./250гр.</span><span>226кал./377кал.</span><span class="price">2,70/3,50 € · 5,28/6,85 лв</span></span></div>
+    </div>
+
+    <div class="menu-cat-head" id="supi"><h3 data-bg="Супи" data-en="Soups" data-ru="Супы">Супи</h3></div>
+    <div class="dishgrid">
+      <div class="dishcard"><img src="assets/menu/m07.webp" alt="Телешко варено" /><b data-bg="Телешко варено" data-en="Veal broth soup" data-ru="Суп из телятины">Телешко варено</b><span class="info"><span>300гр.</span><span>294кал.</span><span class="price">2,45 € / 4,80 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m08.webp" alt="Крем супа от броколи с чедър" /><b data-bg="Крем супа от броколи с чедър" data-en="Broccoli cream soup with cheddar" data-ru="Крем-суп из брокколи с чеддером">Крем супа от броколи с чедър</b><span class="info"><span>300гр.</span><span>297кал.</span><span class="price">1,99 € / 3,90 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m09.webp" alt="Супа топчета" /><b data-bg="Супа топчета" data-en="Meatball soup" data-ru="Суп с фрикадельками">Супа топчета</b><span class="info"><span>300гр.</span><span>339кал.</span><span class="price">2,10 € / 4,10 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m10.webp" alt="Крем супа от тиква с ементал" /><b data-bg="Крем супа от тиква с ементал" data-en="Pumpkin cream soup with emmental" data-ru="Крем-суп из тыквы с эмменталем">Крем супа от тиква с ементал</b><span class="info"><span>300гр.</span><span>393кал.</span><span class="price">1,99 € / 3,90 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m11.webp" alt="Супа от пиле бистра" /><b data-bg="Супа от пиле бистра" data-en="Clear chicken soup" data-ru="Куриный суп на прозрачном бульоне">Супа от пиле бистра</b><span class="info"><span>300гр.</span><span>236кал.</span><span class="price">2,20 € / 4,30 лв</span></span></div>
+    </div>
+
+    <div class="menu-cat-head" id="bez-meso"><h3 data-bg="Ястия без месо и гарнитури" data-en="Meat-free &amp; sides" data-ru="Блюда без мяса и гарниры">Ястия без месо и гарнитури</h3></div>
+    <div class="dishgrid">
+      <div class="dishcard"><img src="assets/menu/m12.webp" alt="Боб яхния" /><b data-bg="Боб яхния" data-en="Bean stew" data-ru="Тушёная фасоль по-болгарски">Боб яхния</b><span class="info"><span>350гр.</span><span>458кал.</span><span class="price">3,50 € / 6,85 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m13.webp" alt="Кашкавал пане" /><b data-bg="Кашкавал пане" data-en="Breaded yellow cheese" data-ru="Кашкавал в панировке">Кашкавал пане</b><span class="info"><span>120гр.</span><span>1410кал.</span><span class="price">3,80 € / 7,43 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m14.webp" alt="Миш-маш" /><b data-bg="Миш-маш" data-en="Mish-mash (eggs, peppers &amp; cheese)" data-ru="Миш-маш">Миш-маш</b><span class="info"><span>300гр.</span><span>629кал.</span><span class="price">4,10 € / 8,02 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m15.webp" alt="Огретен от кашкавал" /><b data-bg="Огретен от кашкавал" data-en="Yellow-cheese gratin" data-ru="Гратен из кашкавала">Огретен от кашкавал</b><span class="info"><span>300гр.</span><span>735кал.</span><span class="price">4,30 € / 8,41 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m16.webp" alt="Лазаня със спанак и рикота" /><b data-bg="Лазаня със спанак и рикота" data-en="Spinach &amp; ricotta lasagne" data-ru="Лазанья со шпинатом и рикоттой">Лазаня със спанак и рикота</b><span class="info"><span>350гр.</span><span>615кал.</span><span class="price">4,50 € / 8,80 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m17.webp" alt="Манатарки и печурки с ориз" /><b data-bg="Манатарки и печурки с ориз" data-en="Porcini &amp; mushrooms with rice" data-ru="Белые грибы и шампиньоны с рисом">Манатарки и печурки с ориз</b><span class="info"><span>350гр.</span><span>406кал.</span><span class="price">4,10 € / 8,02 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m18.webp" alt="Тиквички пълнени с киноа и кашкавал" /><b data-bg="Тиквички пълнени с киноа и кашкавал" data-en="Courgettes stuffed with quinoa &amp; cheese" data-ru="Кабачки, фаршированные киноа и кашкавалом">Тиквички пълнени с киноа и кашкавал</b><span class="info"><span>350гр.</span><span>329кал.</span><span class="price">4,40 € / 8,61 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m19.webp" alt="Картофено пюре с 3 броя яйца" /><b data-bg="Картофено пюре с 3 броя яйца" data-en="Mashed potatoes with 3 eggs" data-ru="Картофельное пюре с 3 яйцами">Картофено пюре с 3 броя яйца</b><span class="info"><span>350гр.</span><span>915кал.</span><span class="price">4,10 € / 8,02 лв</span></span></div>
+    </div>
+
+    <div class="menu-cat-head" id="meso-riba"><h3 data-bg="Ястия с месо и риба" data-en="Meat &amp; fish" data-ru="Блюда из мяса и рыбы">Ястия с месо и риба</h3></div>
+    <div class="dishgrid">
+      <div class="dishcard"><img src="assets/menu/m20.webp" alt="Агнешка дроб сарма" /><b data-bg="Агнешка дроб сарма" data-en="Lamb drob sarma" data-ru="Дроб-сарма из ягнятины">Агнешка дроб сарма</b><span class="info"><span>350гр.</span><span>567кал.</span><span class="price">4,60 € / 9,00 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m21.webp" alt="Гръцка мусака" /><b data-bg="Гръцка мусака" data-en="Greek moussaka" data-ru="Мусака по-гречески">Гръцка мусака</b><span class="info"><span>350гр.</span><span>546кал.</span><span class="price">4,60 € / 9,00 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m22.webp" alt="Гювеч с телешко месо" /><b data-bg="Гювеч с телешко месо" data-en="Veal guvech" data-ru="Гювеч из телятины">Гювеч с телешко месо</b><span class="info"><span>350гр.</span><span>447кал.</span><span class="price">5,20 € / 10,17 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m23.webp" alt="Кюфтета по Цариградски" /><b data-bg="Кюфтета по Цариградски" data-en="Tsarigrad meatballs" data-ru="Тефтели по-цареградски">Кюфтета по Цариградски</b><span class="info"><span>350гр.</span><span>683кал.</span><span class="price">4,60 € / 9,00 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m24.webp" alt="Овчарски пай с кайма и гъби" /><b data-bg="Овчарски пай с кайма и гъби" data-en="Shepherd's pie with mince &amp; mushrooms" data-ru="Пастуший пирог с фаршем и грибами">Овчарски пай с кайма и гъби</b><span class="info"><span>350гр.</span><span>708кал.</span><span class="price">4,30 € / 8,41 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m25.webp" alt="Пилешка пържола Капрезе" /><b data-bg="Пилешка пържола Капрезе" data-en="Chicken steak Caprese" data-ru="Куриный стейк «Капрезе»">Пилешка пържола Капрезе</b><span class="info"><span>200гр.</span><span>402кал.</span><span class="price">4,30 € / 8,41 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m26.webp" alt="Жулиени от свинско месо с гриловани зеленчуци" /><b data-bg="Жулиени от свинско месо с гриловани зеленчуци" data-en="Pork julienne with grilled vegetables" data-ru="Свинина соломкой с овощами гриль">Жулиени от свинско месо с гриловани зеленчуци</b><span class="info"><span>350гр.</span><span>565кал.</span><span class="price">5,20 € / 10,17 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m27.webp" alt="Пилешко месо с ориз" /><b data-bg="Пилешко месо с ориз" data-en="Chicken with rice" data-ru="Курица с рисом">Пилешко месо с ориз</b><span class="info"><span>350гр.</span><span>517кал.</span><span class="price">4,30 € / 8,41 лв</span></span></div>
+    </div>
+
+    <div class="menu-cat-head" id="deserti"><h3 data-bg="Десерти" data-en="Desserts" data-ru="Десерты">Десерти</h3></div>
+    <div class="dishgrid">
+      <div class="dishcard"><img src="assets/menu/m28.webp" alt="Житен десерт" /><b data-bg="Житен десерт" data-en="Wheat-grain dessert" data-ru="Пшеничный десерт">Житен десерт</b><span class="info"><span>200гр.</span><span>428кал.</span><span class="price">2,90 € / 5,67 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m29.webp" alt="Печен сладкиш с ябълки и вишни" /><b data-bg="Печен сладкиш с ябълки и вишни" data-en="Baked apple &amp; sour-cherry cake" data-ru="Запечённый пирог с яблоками и вишней">Печен сладкиш с ябълки и вишни</b><span class="info"><span>200гр.</span><span>439кал.</span><span class="price">2,70 € / 5,28 лв</span></span></div>
+      <div class="dishcard"><img src="assets/menu/m30.webp" alt="Макарони на фурна" /><b data-bg="Макарони на фурна" data-en="Baked sweet macaroni" data-ru="Сладкая макаронная запеканка">Макарони на фурна</b><span class="info"><span>200гр.</span><span>479кал.</span><span class="price">2,50 € / 4,89 лв</span></span></div>
+    </div>
+
+    <p class="menu-note" id="menu-note" data-bg="Хляб, напитки и добавки — на място в заведенията. Цените и стойностите са ориентировъчни — актуалното дневно меню е в обектите." data-en="Bread, drinks &amp; extras — available at the counter. Prices and values are indicative — the current daily menu is in our restaurants." data-ru="Хлеб, напитки и добавки — на месте, в ресторанах. Цены и пищевая ценность указаны ориентировочно — актуальное меню дня смотрите в наших заведениях.">Хляб, напитки и добавки — на място в заведенията. Цените и стойностите са ориентировъчни — актуалното дневно меню е в обектите.</p>
+  </div>
+</section>
+
+<section class="light">
+  <div class="wrap cta-band reveal">
+    <h2 class="h2 h2--dark" data-bg="След 17:00 — купи 1, вземи 2" data-en="After 17:00 — buy 1, get 2" data-ru="После 17:00 — купи 1, получи 2">След 17:00 — купи 1, вземи 2</h2>
+    <p data-bg="Всички ястия и салати." data-en="All dishes and salads." data-ru="Все блюда и салаты.">Всички ястия и салати.</p>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap cta-band reveal">
+    <h2 class="h2" data-bg="Намери заведение" data-en="Find a restaurant" data-ru="Найдите ресторан">Намери заведение</h2>
+    <a class="btn btn--solid" href="locations.html" data-bg="Виж локациите" data-en="View locations" data-ru="Смотреть локации">Виж локациите</a>
+    <p data-bg="Онлайн поръчки — очаквайте скоро." data-en="Online ordering — coming soon." data-ru="Онлайн-заказы — уже скоро.">Онлайн поръчки — очаквайте скоро.</p>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand-col">
+        <img src="assets/logo-white.png" alt="Бешамел" class="footer__logo" />
+        <p data-bg="Домашна кухня, приготвена прясно всеки ден. София · от 2019." data-en="Home cooking, made fresh every day. Sofia · since 2019." data-ru="Домашняя кухня — готовим свежее каждый день. София · с 2019.">Домашна кухня, приготвена прясно всеки ден. София · от 2019.</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/profile.php?id=61570030846957" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/beshamelfoods/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Разгледай">
+        <h4 data-bg="Разгледай" data-en="Explore" data-ru="Разделы">Разгледай</h4>
+        <a href="index.html" data-bg="Начало" data-en="Home" data-ru="Главная">Начало</a>
+        <a href="about.html" data-bg="За нас" data-en="About us" data-ru="О нас">За нас</a>
+        <a href="products.html" data-bg="Продукти" data-en="Products" data-ru="Продукты">Продукти</a>
+        <a href="togo.html" data-bg="Бешамел ToGo" data-en="Beshamel ToGo" data-ru="Бешамел ToGo">Бешамел ToGo</a>
+        <a href="locations.html" data-bg="Локации" data-en="Locations" data-ru="Локации">Локации</a>
+      </nav>
+      <nav class="footer__col" aria-label="Присъедини се">
+        <h4 data-bg="Присъедини се" data-en="Join us" data-ru="Присоединяйтесь">Присъедини се</h4>
+        <a href="franchise.html" data-bg="Франчайз" data-en="Franchise" data-ru="Франшиза">Франчайз</a>
+        <a href="careers.html" data-bg="Кариери" data-en="Careers" data-ru="Карьера">Кариери</a>
+        <a href="partners.html" data-bg="Партньори" data-en="Partners" data-ru="Партнёры">Партньори</a>
+        <a href="contact.html" data-bg="Контакти" data-en="Contact" data-ru="Контакты">Контакти</a>
+      </nav>
+      <div class="footer__col">
+        <h4 data-bg="Поръчки и връзка" data-en="Ordering &amp; contact" data-ru="Заказы и связь">Поръчки и връзка</h4>
+        <p class="footer__soon"><span data-bg="Онлайн поръчки" data-en="Online ordering" data-ru="Онлайн-заказы">Онлайн поръчки</span><em data-bg="скоро" data-en="soon" data-ru="скоро">скоро</em></p>
+        <a href="products.html" data-bg="Дневно меню" data-en="Daily menu" data-ru="Меню дня">Дневно меню</a>
+        <a href="mailto:contact@beshamel.bg">contact@beshamel.bg</a>
+        <a href="tel:+359885101035">0885 10 10 35</a>
+        <p class="footer__addr" data-bg="6 заведения в София" data-en="6 restaurants in Sofia" data-ru="6 заведений в Софии">6 заведения в София</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span data-bg="© 2026 Да-За ООД · Всички права запазени" data-en="© 2026 Da-Za OOD · All rights reserved" data-ru="© 2026 Да-За ООД · Все права защищены">© 2026 Да-За ООД · Всички права запазени</span>
+      <span class="footer__legal">
+        <a href="privacy.html" data-bg="Политика за поверителност" data-en="Privacy policy" data-ru="Политика конфиденциальности">Политика за поверителност</a>
+        <a href="terms.html" data-bg="Условия за ползване" data-en="Terms of use" data-ru="Условия использования">Условия за ползване</a>
+      </span>
+    </div>
+  </div>
+</footer>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="promo-data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
