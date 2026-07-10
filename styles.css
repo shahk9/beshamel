@@ -906,3 +906,8 @@ body::after{
 }
 /* формата в решетка запълва клетката си (не се центрира) */
 .contact-grid .form{margin:0;width:100%;max-width:none}
+
+/* ---------- фото ленти (генерираните атмосферни кадри) ---------- */
+.photo-band{width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:14px;
+  margin-top:2.4rem;display:block;box-shadow:var(--shadow-card)}
+@media(max-width:760px){.photo-band{aspect-ratio:16/10}}
