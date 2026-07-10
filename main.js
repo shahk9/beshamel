@@ -305,6 +305,8 @@
     var jrCine = document.getElementById('jrCine');
     var jrCtx = jrCine ? jrCine.getContext('2d') : null;
     var JRF = 121;
+    var jrMobCine = window.matchMedia('(max-width:760px)').matches;
+    var jrSeqDir = jrMobCine ? 'assets/seq-story-m/' : 'assets/seq-story/';
     var jrImgs = new Array(JRF);
     var jrLoaded = false, jrCur = -1, jrTarget = 0, jrSmooth = 0, jrCineRaf = 0;
     function jrPad(n) { return ('00' + n).slice(-3); }
@@ -333,7 +335,7 @@
         (function (fi) {
           var img = new Image();
           img.onload = function () { if (fi === Math.round(jrSmooth)) { jrCur = -1; jrCineDraw(fi); } };
-          img.src = 'assets/seq-story/f_' + jrPad(fi + 1) + '.jpg';
+          img.src = jrSeqDir + 'f_' + jrPad(fi + 1) + '.jpg';
           jrImgs[fi] = img;
         })(fi);
       }
@@ -352,7 +354,7 @@
     }
     /* кадрите тръгват да се теглят чак когато секцията наближи (пестим старта) */
     ScrollTrigger.create({
-      trigger: '#map', start: 'top 250%',
+      trigger: '#map', start: jrMobCine ? 'top 400%' : 'top 250%',
       once: true, onEnter: jrCineLoad
     });
     /* киното следва скрола под ЦЕЛИЯ маршрут — ръчен "pin" с живи измервания

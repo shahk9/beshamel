@@ -863,6 +863,8 @@ body::after{
 /* ---------- „Светлините на София" — четими карти на телефон ---------- */
 @media(max-width:760px){
   .jr__stop{opacity:.28;transition:opacity .5s var(--ease)}
+  /* преди запалване: без плаваща празна кутия — само дискретен текст */
+  .jr__stop:not(.is-lit) .jr__card{background:transparent;border-color:transparent;box-shadow:none}
   .jr__stop.is-lit{opacity:1}
   .jr__stop.is-lit .jr__year{color:var(--saffron)}
   .jr__stop.is-lit .jr__card h3{color:#fff}
