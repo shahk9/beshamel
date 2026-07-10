@@ -357,21 +357,13 @@
       trigger: '#map', start: jrMobCine ? 'top 400%' : 'top 250%',
       once: true, onEnter: jrCineLoad
     });
-    /* киното следва скрола под ЦЕЛИЯ маршрут — ръчен "pin" с живи измервания
-       (GSAP pin/sticky се разместват, когато lazy снимки пораснат страницата) */
-    var jrCineWrap = document.querySelector('.jr-cine');
-    var jrMapSec = document.getElementById('map');
-    if (jrCineWrap && jrMapSec) {
-      var jrFollow = function () {
-        var r = jrMapSec.getBoundingClientRect();
-        var vh = window.innerHeight;
-        /* колко да слезе слоят, за да стои в екрана, докато секцията минава */
-        var yOff = Math.min(Math.max(0, -r.top), Math.max(0, r.height - vh));
-        jrCineWrap.style.transform = 'translate3d(0,' + yOff.toFixed(1) + 'px,0)';
-      };
-      window.addEventListener('scroll', jrFollow, { passive: true });
-      window.addEventListener('resize', jrFollow);
-      jrFollow();
+    /* киното под ЦЕЛИЯ маршрут: GSAP pin (композитно fixed — гладко на телефон;
+       JS-следене по scroll събития трепери на iOS, защото изостава с кадър) */
+    if (jrCine) {
+      ScrollTrigger.create({
+        trigger: '#map', start: 'top top', end: 'bottom top',
+        pin: '.jr-cine', pinSpacing: false, anticipatePin: 1
+      });
     }
 
     jrBuild();
