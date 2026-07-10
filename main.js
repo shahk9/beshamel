@@ -124,9 +124,9 @@
     })();
   }
 
-  /* ---------- discipline: pinned horizontal ---------- */
+  /* ---------- discipline: pinned horizontal (десктоп) / естествено плъзгане (телефон) ---------- */
   var track = document.getElementById('discTrack');
-  if (track) {
+  if (track && window.matchMedia('(min-width:761px)').matches) {
     var getShift = function () { return track.scrollWidth - window.innerWidth + 80; };
     gsap.to(track, {
       x: function () { return -getShift(); },
@@ -355,12 +355,21 @@
       trigger: '#map', start: 'top 250%',
       once: true, onEnter: jrCineLoad
     });
-    /* киното остава под ЦЕЛИЯ маршрут: pin на фоновия слой (sticky се чупи от overflow-x:hidden) */
-    if (jrCine) {
-      ScrollTrigger.create({
-        trigger: '#map', start: 'top top', end: 'bottom top',
-        pin: '.jr-cine', pinSpacing: false, anticipatePin: 1
-      });
+    /* киното следва скрола под ЦЕЛИЯ маршрут — ръчен "pin" с живи измервания
+       (GSAP pin/sticky се разместват, когато lazy снимки пораснат страницата) */
+    var jrCineWrap = document.querySelector('.jr-cine');
+    var jrMapSec = document.getElementById('map');
+    if (jrCineWrap && jrMapSec) {
+      var jrFollow = function () {
+        var r = jrMapSec.getBoundingClientRect();
+        var vh = window.innerHeight;
+        /* колко да слезе слоят, за да стои в екрана, докато секцията минава */
+        var yOff = Math.min(Math.max(0, -r.top), Math.max(0, r.height - vh));
+        jrCineWrap.style.transform = 'translate3d(0,' + yOff.toFixed(1) + 'px,0)';
+      };
+      window.addEventListener('scroll', jrFollow, { passive: true });
+      window.addEventListener('resize', jrFollow);
+      jrFollow();
     }
 
     jrBuild();
@@ -568,6 +577,16 @@
   var savedLang = null;
   try { savedLang = localStorage.getItem('besh-lang'); } catch (err) {}
   if (savedLang && savedLang !== 'bg') setLang(savedLang);
+
+  /* късно заредените (lazy) снимки растат страницата → опреснявай позициите на тригерите */
+  var lazyRefreshT = 0;
+  document.querySelectorAll('img[loading="lazy"]').forEach(function (img) {
+    if (img.complete) return;
+    img.addEventListener('load', function () {
+      clearTimeout(lazyRefreshT);
+      lazyRefreshT = setTimeout(function () { ScrollTrigger.refresh(); }, 250);
+    }, { once: true });
+  });
 
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
 })();
