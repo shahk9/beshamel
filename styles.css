@@ -903,3 +903,10 @@ body::after{
   .jr-cine canvas{display:none}
   .jr-cine{background:url("assets/seq-story/f_060.jpg") center 30%/cover no-repeat}
 }
+
+/* ---------- hero на телефон: един екран, статичен кадър, мигновено ---------- */
+@media(max-width:760px){
+  .hero{height:100vh;height:100svh;min-height:560px}
+  .hero__sticky{position:relative;height:100%;min-height:0}
+  .hero__video{background:#000 url("assets/seq/f_180.jpg") center 42%/cover no-repeat}
+}

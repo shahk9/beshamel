@@ -71,7 +71,13 @@
   var heroOutro = document.getElementById('heroOutro');
   var heroCue = document.getElementById('heroScroll');
   function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-  if (canvas) {
+  var heroDesktop = window.matchMedia('(min-width:761px)').matches;
+  if (canvas && !heroDesktop) {
+    /* телефон: без 201 кадъра и без скръб — канвасът остава празен,
+       CSS фонът му е статичният кадър; текстът стои */
+    if (heroOutro) heroOutro.style.display = 'none';
+  }
+  if (canvas && heroDesktop) {
     var ctx = canvas.getContext('2d');
     var FRAMES = 201;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
