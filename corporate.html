@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=14" />
+<link rel="stylesheet" href="styles.css?v=15" />
 </head>
 <body>
 <header class="nav" id="nav">
@@ -68,7 +68,8 @@
   <div class="wrap reveal">
     <p class="kicker accent" data-bg="Заяви обаждане" data-en="Request a call" data-ru="Заявка на звонок">Заяви обаждане</p>
     <h2 class="h2 h2--dark" data-bg="Остави ни телефон — ние поемаме оттам" data-en="Leave us a phone number — we take it from there" data-ru="Оставьте телефон — дальше всё сделаем мы">Остави ни телефон — ние поемаме оттам</h2>
-    <form class="form" id="corpForm" style="margin-top:2.4rem">
+    <div class="contact-grid" style="margin-top:2.4rem">
+    <form class="form" id="corpForm">
       <div class="field"><label for="co-company" data-bg="Фирма" data-en="Company" data-ru="Компания">Фирма</label><input id="co-company" type="text" required /></div>
       <div class="field"><label for="co-name" data-bg="Лице за контакт" data-en="Contact person" data-ru="Контактное лицо">Лице за контакт</label><input id="co-name" type="text" required /></div>
       <div class="field"><label for="co-phone" data-bg="Телефон" data-en="Phone" data-ru="Телефон">Телефон</label><input id="co-phone" type="tel" required /></div>
@@ -98,6 +99,14 @@
         <a href="tel:+359885101035">0885 10 10 35</a><span>.</span>
       </p>
     </form>
+    <aside class="contact-side">
+      <img src="assets/interiors/1.jpg" alt="Салонът на Бешамел" loading="lazy" />
+      <p><strong data-bg="Или директно:" data-en="Or directly:" data-ru="Или напрямую:">Или директно:</strong></p>
+      <p><a class="link" href="tel:+359885101035">0885 10 10 35</a><br />
+         <a class="link" href="mailto:contact@beshamel.bg">contact@beshamel.bg</a></p>
+      <p class="contact-note" data-bg="Разкажи ни за екипа си — останалото е наша грижа." data-en="Tell us about your team — the rest is our job." data-ru="Расскажите о своей команде — остальное мы возьмём на себя.">Разкажи ни за екипа си — останалото е наша грижа.</p>
+    </aside>
+    </div>
     <div id="corpSuccess" hidden style="max-width:580px;margin:2.4rem auto 0;text-align:center">
       <span class="cicon" style="margin:0 auto 1rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.6 2.6L16 9.5"/></svg></span>
       <h3 style="font-family:var(--f-display);font-size:var(--step-3);color:var(--ink);margin:0 0 .5rem" data-bg="Прието!" data-en="Received!" data-ru="Принято!">Прието!</h3>
@@ -170,11 +179,11 @@
     </div>
   </div>
 </footer>
-<script src="assets/vendor/gsap.min.js?v=14"></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=14"></script>
-<script src="assets/vendor/lenis.min.js?v=14"></script>
-<script src="promo-data.js?v=14"></script>
-<script src="main.js?v=14"></script>
+<script src="assets/vendor/gsap.min.js?v=15"></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=15"></script>
+<script src="assets/vendor/lenis.min.js?v=15"></script>
+<script src="promo-data.js?v=15"></script>
+<script src="main.js?v=15"></script>
 <script>
 (function () {
   var form = document.getElementById('corpForm');

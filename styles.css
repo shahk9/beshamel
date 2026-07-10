@@ -896,3 +896,13 @@ body::after{
 
 
 
+
+/* ---------- навигацията никога не чупи линк + среден десктоп диапазон ---------- */
+.nav__links a{white-space:nowrap}
+@media(min-width:1025px) and (max-width:1320px){
+  .nav{gap:1rem}
+  .nav__links{gap:1.05rem}
+  .nav__links a{font-size:.78rem;letter-spacing:.09em}
+}
+/* формата в решетка запълва клетката си (не се центрира) */
+.contact-grid .form{margin:0;width:100%;max-width:none}
