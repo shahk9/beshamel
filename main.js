@@ -350,16 +350,20 @@
         jrTarget = jrSmooth = 60;
       }
     }
-    /* кадрите тръгват да се теглят чак когато секцията наближи (пестим старта) */
-    ScrollTrigger.create({
-      trigger: '#map', start: 'top 250%',
-      once: true, onEnter: jrCineLoad
-    });
+    /* кадрите тръгват да се теглят чак когато секцията наближи (пестим старта).
+       САМО десктоп: на телефон фонът е статичен кадър (CSS) — гладко и леко. */
+    var jrDesktop = window.matchMedia('(min-width:761px)').matches;
+    if (jrDesktop) {
+      ScrollTrigger.create({
+        trigger: '#map', start: 'top 250%',
+        once: true, onEnter: jrCineLoad
+      });
+    }
     /* киното следва скрола под ЦЕЛИЯ маршрут — ръчен "pin" с живи измервания
        (GSAP pin/sticky се разместват, когато lazy снимки пораснат страницата) */
     var jrCineWrap = document.querySelector('.jr-cine');
     var jrMapSec = document.getElementById('map');
-    if (jrCineWrap && jrMapSec) {
+    if (jrCineWrap && jrMapSec && jrDesktop) {
       var jrFollow = function () {
         var r = jrMapSec.getBoundingClientRect();
         var vh = window.innerHeight;
@@ -578,14 +582,20 @@
   try { savedLang = localStorage.getItem('besh-lang'); } catch (err) {}
   if (savedLang && savedLang !== 'bg') setLang(savedLang);
 
-  /* късно заредените (lazy) снимки растат страницата → опреснявай позициите на тригерите */
-  var lazyRefreshT = 0;
+  /* късно заредените (lazy) снимки растат страницата → опресни позициите,
+     но САМО в покой — refresh по време на скрол прави видим подскок */
+  var jrNeedRefresh = false;
+  var lastScrollTs = 0;
+  window.addEventListener('scroll', function () { lastScrollTs = Date.now(); }, { passive: true });
+  setInterval(function () {
+    if (jrNeedRefresh && Date.now() - lastScrollTs > 600) {
+      jrNeedRefresh = false;
+      ScrollTrigger.refresh();
+    }
+  }, 400);
   document.querySelectorAll('img[loading="lazy"]').forEach(function (img) {
     if (img.complete) return;
-    img.addEventListener('load', function () {
-      clearTimeout(lazyRefreshT);
-      lazyRefreshT = setTimeout(function () { ScrollTrigger.refresh(); }, 250);
-    }, { once: true });
+    img.addEventListener('load', function () { jrNeedRefresh = true; }, { once: true });
   });
 
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
