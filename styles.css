@@ -824,7 +824,7 @@ body::after{
 
 /* ---------- Кино слоят на „Светлините на София" — утринното камионче (Kling скръб) ---------- */
 /* sticky кадър зад съдържанието: колата пътува, докато линията се чертае отгоре */
-.jr-cine{position:absolute;top:0;left:0;right:0;height:100vh;z-index:0;overflow:hidden;pointer-events:none}
+.jr-cine{position:absolute;top:0;left:0;width:100vw;max-width:100%;height:100vh;z-index:0;overflow:hidden;pointer-events:none}
 .jr-cine canvas{width:100%;height:100%;display:block}
 .jr-cine__veil{position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(30,27,24,.94) 0%,rgba(30,27,24,.58) 26%,rgba(30,27,24,.62) 72%,rgba(30,27,24,.95) 100%),

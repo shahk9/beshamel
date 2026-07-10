@@ -362,8 +362,11 @@
     if (jrCine) {
       ScrollTrigger.create({
         trigger: '#map', start: 'top top', end: 'bottom top',
-        pin: '.jr-cine', pinSpacing: false, anticipatePin: 1
+        pin: '.jr-cine', pinSpacing: false, anticipatePin: 1,
+        onToggle: function () { jrCineSize(); }
       });
+      /* след всяко преизчисление на тригерите канвасът се премерва наново */
+      ScrollTrigger.addEventListener('refresh', jrCineSize);
     }
 
     jrBuild();
