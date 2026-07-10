@@ -872,8 +872,11 @@ body::after{
   .jr__stop.is-lit .jr__card{background:rgba(20,18,16,.9);border-color:rgba(249,174,78,.35)}
 }
 
-@media(max-width:760px){
+@media(max-width:1024px){
+  /* пилът „Дневно меню" дублира линка „Продукти" — на тесни екрани пада */
   .nav__right .btn--pill{display:none}
+}
+@media(max-width:760px){
   .nav{gap:.8rem}
 }
 .mnav__inner .mnav__daily{font-size:1rem;text-transform:uppercase;letter-spacing:.08em;
@@ -881,11 +884,11 @@ body::after{
 
 /* ---------- таблет: компактна навигация (761–1024px) ---------- */
 @media(min-width:761px) and (max-width:1024px){
-  .nav{gap:.9rem;padding-left:22px;padding-right:22px}
+  .nav{gap:.7rem;padding-left:16px;padding-right:16px}
   .nav__logo{flex:0 0 auto}
-  .nav__logo img{height:30px}
-  .nav__links{gap:.95rem}
-  .nav__links a{font-size:.72rem;letter-spacing:.08em;white-space:nowrap}
+  .nav__logo img{height:28px}
+  .nav__links{gap:.75rem}
+  .nav__links a{font-size:.68rem;letter-spacing:.06em;white-space:nowrap}
   .nav__right{gap:.6rem}
   .nav__right .btn--pill{padding:.55em 1em;font-size:.7rem;white-space:nowrap}
   .lang{padding:.35em .6em;font-size:.72rem}
