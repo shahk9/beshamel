@@ -830,3 +830,61 @@ body::after{
   background:linear-gradient(180deg,rgba(30,27,24,.94) 0%,rgba(30,27,24,.58) 26%,rgba(30,27,24,.62) 72%,rgba(30,27,24,.95) 100%),
              radial-gradient(120% 90% at 50% 42%,rgba(30,27,24,0) 38%,rgba(30,27,24,.5) 100%)}
 .journey .wrap,.journey .jr{position:relative;z-index:1}
+
+/* ---------- мобилно меню (бургер) ---------- */
+.nav__burger{display:none;width:44px;height:44px;border:0;background:none;cursor:pointer;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;flex:0 0 auto}
+.nav__burger span{display:block;width:22px;height:2px;background:#efe7da;border-radius:2px;
+  transition:transform .3s var(--ease),opacity .2s}
+.nav__burger.is-open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav__burger.is-open span:nth-child(2){opacity:0}
+.nav__burger.is-open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:760px){.nav__burger{display:flex}}
+
+.mnav{position:fixed;inset:0;z-index:150;background:rgba(26,23,20,.98);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .25s var(--ease)}
+.mnav.is-open{opacity:1;pointer-events:auto}
+.mnav__inner{display:flex;flex-direction:column;align-items:center;gap:1.4rem;text-align:center}
+.mnav__inner a{color:#efe7da;text-decoration:none;font-family:var(--f-display);
+  font-weight:600;font-size:1.5rem;letter-spacing:.02em;
+  opacity:0;transform:translateY(14px);transition:opacity .4s var(--ease),transform .4s var(--ease),color .2s}
+.mnav.is-open .mnav__inner a{opacity:1;transform:none}
+.mnav__inner a:hover{color:var(--saffron)}
+.mnav__inner a:nth-child(1){transition-delay:.05s}.mnav__inner a:nth-child(2){transition-delay:.1s}
+.mnav__inner a:nth-child(3){transition-delay:.15s}.mnav__inner a:nth-child(4){transition-delay:.2s}
+.mnav__inner a:nth-child(5){transition-delay:.25s}.mnav__inner a:nth-child(6){transition-delay:.3s}
+.mnav__inner a:nth-child(7){transition-delay:.35s}
+.mnav__inner .mnav__order{margin-top:.8rem;background:var(--saffron);color:#241f17;
+  font-size:1rem;text-transform:uppercase;letter-spacing:.08em;
+  padding:.85em 2em;border-radius:40px;font-family:var(--f-display);font-weight:500}
+@media(prefers-reduced-motion:reduce){.mnav,.mnav__inner a,.nav__burger span{transition:none}}
+
+/* ---------- „Светлините на София" — четими карти на телефон ---------- */
+@media(max-width:760px){
+  .jr__stop{opacity:.28;transition:opacity .5s var(--ease)}
+  .jr__stop.is-lit{opacity:1}
+  .jr__stop.is-lit .jr__year{color:var(--saffron)}
+  .jr__stop.is-lit .jr__card h3{color:#fff}
+  .jr__stop.is-lit .jr__card p{color:rgba(239,231,218,.85)}
+  .jr__stop.is-lit .jr__card{background:rgba(20,18,16,.9);border-color:rgba(249,174,78,.35)}
+}
+
+@media(max-width:760px){
+  .nav__right .btn--pill{display:none}
+  .nav{gap:.8rem}
+}
+.mnav__inner .mnav__daily{font-size:1rem;text-transform:uppercase;letter-spacing:.08em;
+  border:1px solid rgba(239,231,218,.4);border-radius:40px;padding:.8em 1.8em;font-weight:500}
+
+/* ---------- таблет: компактна навигация (761–1024px) ---------- */
+@media(min-width:761px) and (max-width:1024px){
+  .nav{gap:.9rem;padding-left:22px;padding-right:22px}
+  .nav__logo{flex:0 0 auto}
+  .nav__logo img{height:30px}
+  .nav__links{gap:.95rem}
+  .nav__links a{font-size:.72rem;letter-spacing:.08em;white-space:nowrap}
+  .nav__right{gap:.6rem}
+  .nav__right .btn--pill{padding:.55em 1em;font-size:.7rem;white-space:nowrap}
+  .lang{padding:.35em .6em;font-size:.72rem}
+}

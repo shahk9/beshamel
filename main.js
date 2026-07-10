@@ -519,6 +519,51 @@
     });
   }
 
+  /* ---------- мобилно меню: бургер + пълноекранен слой (сглобява се от nav линковете) ---------- */
+  var navLinksBox = document.querySelector('.nav__links');
+  var navRight = document.querySelector('.nav__right');
+  if (navLinksBox && navRight && !document.querySelector('.nav__burger')) {
+    var burger = document.createElement('button');
+    burger.className = 'nav__burger';
+    burger.setAttribute('aria-label', 'Меню');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+    navRight.appendChild(burger);
+
+    var mnav = document.createElement('div');
+    mnav.className = 'mnav';
+    var inner = document.createElement('div');
+    inner.className = 'mnav__inner';
+    navLinksBox.querySelectorAll('a').forEach(function (a) {
+      inner.appendChild(a.cloneNode(true)); /* клонът носи data-bg/en/ru → триезичен */
+    });
+    var dailyBtn = document.querySelector('.nav__right .btn--pill');
+    if (dailyBtn) {
+      var dc = dailyBtn.cloneNode(true);
+      dc.className = 'mnav__daily';
+      inner.appendChild(dc);
+    }
+    var orderLink = document.querySelector('.nav__order');
+    if (orderLink) {
+      var oc = orderLink.cloneNode(true);
+      oc.className = 'mnav__order js-order-link';
+      if (window.BESHAMEL_ORDERS_URL) oc.href = window.BESHAMEL_ORDERS_URL;
+      inner.appendChild(oc);
+    }
+    mnav.appendChild(inner);
+    document.body.appendChild(mnav);
+
+    function setMenu(open) {
+      mnav.classList.toggle('is-open', open);
+      burger.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    burger.addEventListener('click', function () { setMenu(!mnav.classList.contains('is-open')); });
+    mnav.addEventListener('click', function (e) { if (e.target.closest('a') || e.target === mnav) setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  }
+
   /* apply the saved language after all dynamic content is built */
   var savedLang = null;
   try { savedLang = localStorage.getItem('besh-lang'); } catch (err) {}
