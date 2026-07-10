@@ -5,6 +5,9 @@ window.BESHAMEL_ORDERS_URL = window.location.hostname.endsWith("github.io")
   ? "orders/"
   : "https://launch-from-software-advisors.trycloudflare.com";
 
+// Адресът на API-то (форми/заявки). Прод: https://beshamel.bg (или api субдомейн)
+window.BESHAMEL_API_URL = "https://switches-art-oct-gzip.trycloudflare.com";
+
 // ============================================================
 //  ПРОМОЦИИТЕ НА СЕДМИЦАТА — Бешамел
 //  Това е ЕДИНСТВЕНИЯТ файл, който се пипа при смяна на промоциите.
