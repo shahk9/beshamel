@@ -580,20 +580,10 @@
   try { savedLang = localStorage.getItem('besh-lang'); } catch (err) {}
   if (savedLang && savedLang !== 'bg') setLang(savedLang);
 
-  /* късно заредените (lazy) снимки растат страницата → опресни позициите,
-     но САМО в покой — refresh по време на скрол прави видим подскок */
-  var jrNeedRefresh = false;
-  var lastScrollTs = 0;
-  window.addEventListener('scroll', function () { lastScrollTs = Date.now(); }, { passive: true });
-  setInterval(function () {
-    if (jrNeedRefresh && Date.now() - lastScrollTs > 600) {
-      jrNeedRefresh = false;
-      ScrollTrigger.refresh();
-    }
-  }, 400);
-  document.querySelectorAll('img[loading="lazy"]').forEach(function (img) {
-    if (img.complete) return;
-    img.addEventListener('load', function () { jrNeedRefresh = true; }, { once: true });
+  /* една-единствена отложена калибровка след като всичко тежко е пристигнало —
+     без периодични refresh-и (те заекваха скрола на телефон) */
+  window.addEventListener('load', function () {
+    setTimeout(function () { ScrollTrigger.refresh(); }, 2500);
   });
 
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
