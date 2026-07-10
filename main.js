@@ -71,13 +71,7 @@
   var heroOutro = document.getElementById('heroOutro');
   var heroCue = document.getElementById('heroScroll');
   function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
-  var heroDesktop = window.matchMedia('(min-width:761px)').matches;
-  if (canvas && !heroDesktop) {
-    /* телефон: без 201 кадъра и без скръб — канвасът остава празен,
-       CSS фонът му е статичният кадър; текстът стои */
-    if (heroOutro) heroOutro.style.display = 'none';
-  }
-  if (canvas && heroDesktop) {
+  if (canvas) {
     var ctx = canvas.getContext('2d');
     var FRAMES = 201;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -132,7 +126,7 @@
 
   /* ---------- discipline: pinned horizontal (десктоп) / естествено плъзгане (телефон) ---------- */
   var track = document.getElementById('discTrack');
-  if (track && window.matchMedia('(min-width:761px)').matches) {
+  if (track) {
     var getShift = function () { return track.scrollWidth - window.innerWidth + 80; };
     gsap.to(track, {
       x: function () { return -getShift(); },
@@ -356,20 +350,16 @@
         jrTarget = jrSmooth = 60;
       }
     }
-    /* кадрите тръгват да се теглят чак когато секцията наближи (пестим старта).
-       САМО десктоп: на телефон фонът е статичен кадър (CSS) — гладко и леко. */
-    var jrDesktop = window.matchMedia('(min-width:761px)').matches;
-    if (jrDesktop) {
-      ScrollTrigger.create({
-        trigger: '#map', start: 'top 250%',
-        once: true, onEnter: jrCineLoad
-      });
-    }
+    /* кадрите тръгват да се теглят чак когато секцията наближи (пестим старта) */
+    ScrollTrigger.create({
+      trigger: '#map', start: 'top 250%',
+      once: true, onEnter: jrCineLoad
+    });
     /* киното следва скрола под ЦЕЛИЯ маршрут — ръчен "pin" с живи измервания
        (GSAP pin/sticky се разместват, когато lazy снимки пораснат страницата) */
     var jrCineWrap = document.querySelector('.jr-cine');
     var jrMapSec = document.getElementById('map');
-    if (jrCineWrap && jrMapSec && jrDesktop) {
+    if (jrCineWrap && jrMapSec) {
       var jrFollow = function () {
         var r = jrMapSec.getBoundingClientRect();
         var vh = window.innerHeight;
@@ -579,6 +569,8 @@
       document.body.style.overflow = open ? 'hidden' : '';
     }
     burger.addEventListener('click', function () { setMenu(!mnav.classList.contains('is-open')); });
+    /* iOS bfcache: при връщане назад страницата се възстановява с отворено меню и заключен скрол */
+    window.addEventListener('pageshow', function () { setMenu(false); });
     mnav.addEventListener('click', function (e) { if (e.target.closest('a') || e.target === mnav) setMenu(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
   }
