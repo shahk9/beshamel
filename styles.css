@@ -937,3 +937,7 @@ body::after{
   .thero{height:100vh}
   .thero__outro{display:none}
 }
+
+/* ---------- бранд линията на заведенията (от камиончето) ---------- */
+.brand-line{font-family:var(--f-display);font-weight:600;font-style:italic;
+  font-size:clamp(1.5rem,3.4vw,2.3rem);letter-spacing:.01em;margin:-.3rem 0 2rem}
