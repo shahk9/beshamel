@@ -287,9 +287,22 @@
       ScrollTrigger.create({
         trigger: '#dayCine', start: 'top top', end: 'bottom bottom', scrub: true,
         onUpdate: function (self) {
-          var p = self.progress;
-          var seg = Math.min(DAY_ACTS.length - 1, Math.floor(p * DAY_ACTS.length));
-          var local = p * DAY_ACTS.length - seg;
+          /* тежести: кухнята диша най-дълго; всичко приключва на 93% —
+             остатъкът е кратък издих преди следващата секция (iOS лентата
+             мести края и без резерв опашката става мъртва) */
+          var W = [1.35, 1, 1, 0.85];
+          var SUM = 4.2; /* сборът на тежестите */
+          var p = Math.min(1, self.progress / 0.93);
+          var acc = 0, seg = 0, local = 0;
+          for (var wi = 0; wi < W.length; wi++) {
+            var span = W[wi] / SUM;
+            if (p <= acc + span || wi === W.length - 1) {
+              seg = wi;
+              local = Math.min(1, (p - acc) / span);
+              break;
+            }
+            acc += span;
+          }
           var wasAct = dayAct;
           daySetAct(seg);
           dayTarget = local * (DAY_ACTS[seg].n - 1);
