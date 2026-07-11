@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=20" />
+<link rel="stylesheet" href="styles.css?v=21" />
 </head>
 <body>
 <header class="nav" id="nav">
@@ -221,13 +221,15 @@
     <h2 class="h2 h2--dark" data-bg="От сутринта до последната чиния" data-en="From morning to the last plate" data-ru="С утра до последней тарелки">От сутринта до последната чиния</h2>
   </div>
   <div class="daycine" id="dayCine">
-    <canvas class="daycine__canvas" id="dayCanvas" aria-label="Един ден в Бешамел"></canvas>
-    <div class="daycine__veil"></div>
-    <div class="daycine__panel">
-      <span class="daycine__time" id="dayTime">05:30</span>
-      <span class="daycine__cap" id="dayCap"></span>
+    <div class="daycine__sticky">
+      <canvas class="daycine__canvas" id="dayCanvas" aria-label="Един ден в Бешамел"></canvas>
+      <div class="daycine__veil"></div>
+      <div class="daycine__panel">
+        <span class="daycine__time" id="dayTime">05:30</span>
+        <span class="daycine__cap" id="dayCap"></span>
+      </div>
+      <div class="daycine__dots" id="dayDots"><i class="is-on"></i><i></i><i></i><i></i></div>
     </div>
-    <div class="daycine__dots" id="dayDots"><i class="is-on"></i><i></i><i></i><i></i></div>
   </div>
   <div class="wrap">
     <div class="grid grid--4" style="margin-top:2.2rem">
@@ -336,9 +338,9 @@
     </div>
   </div>
 </footer>
-<script src="assets/vendor/gsap.min.js?v=20"></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=20"></script>
-<script src="assets/vendor/lenis.min.js?v=20"></script>
-<script src="main.js?v=20"></script>
+<script src="assets/vendor/gsap.min.js?v=21"></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=21"></script>
+<script src="assets/vendor/lenis.min.js?v=21"></script>
+<script src="main.js?v=21"></script>
 </body>
 </html>

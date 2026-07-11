@@ -285,8 +285,7 @@
 
     if (!dayStill) {
       ScrollTrigger.create({
-        trigger: '#dayCine', start: 'top top', end: '+=350%',
-        pin: true, scrub: true, anticipatePin: 1,
+        trigger: '#dayCine', start: 'top top', end: 'bottom bottom', scrub: true,
         onUpdate: function (self) {
           var p = self.progress;
           var seg = Math.min(DAY_ACTS.length - 1, Math.floor(p * DAY_ACTS.length));
