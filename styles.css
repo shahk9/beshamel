@@ -963,3 +963,6 @@ body::after{
   transition:background .3s,transform .3s}
 .daycine__dots i.is-on{background:var(--saffron);transform:scale(1.25)}
 @media(prefers-reduced-motion:reduce){.daycine__cap{transition:none}.daycine{height:100vh}}
+
+/* финалът на „Деня": фейд към тъмно — филмът свършва, после секцията се изнася */
+.daycine__fade{position:absolute;inset:0;background:#0a0908;opacity:0;pointer-events:none;z-index:3}

@@ -292,7 +292,11 @@
              мести края и без резерв опашката става мъртва) */
           var W = [1.35, 1, 1, 0.85];
           var SUM = 4.2; /* сборът на тежестите */
-          var p = Math.min(1, self.progress / 0.93);
+          var pRaw = self.progress;
+          var p = Math.min(1, pRaw / 0.9);
+          /* последните 10%: фейд към тъмно — кино финал вместо статичен кадър */
+          var dayFade = document.getElementById('dayFade');
+          if (dayFade) dayFade.style.opacity = Math.max(0, Math.min(1, (pRaw - 0.9) / 0.09)) * 0.96;
           var acc = 0, seg = 0, local = 0;
           for (var wi = 0; wi < W.length; wi++) {
             var span = W[wi] / SUM;
