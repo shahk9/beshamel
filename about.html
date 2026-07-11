@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=19" />
+<link rel="stylesheet" href="styles.css?v=20" />
 </head>
 <body>
 <header class="nav" id="nav">
@@ -216,9 +216,20 @@
 </section>
 
 <section class="light" style="background:var(--canvas-2)">
-  <div class="wrap reveal">
+  <div class="wrap reveal" style="padding-bottom:1.4rem">
     <p class="kicker accent" data-bg="Денят на Бешамел" data-en="A day at Beshamel" data-ru="День Бешамел">Денят на Бешамел</p>
     <h2 class="h2 h2--dark" data-bg="От сутринта до последната чиния" data-en="From morning to the last plate" data-ru="С утра до последней тарелки">От сутринта до последната чиния</h2>
+  </div>
+  <div class="daycine" id="dayCine">
+    <canvas class="daycine__canvas" id="dayCanvas" aria-label="Един ден в Бешамел"></canvas>
+    <div class="daycine__veil"></div>
+    <div class="daycine__panel">
+      <span class="daycine__time" id="dayTime">05:30</span>
+      <span class="daycine__cap" id="dayCap"></span>
+    </div>
+    <div class="daycine__dots" id="dayDots"><i class="is-on"></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="wrap">
     <div class="grid grid--4" style="margin-top:2.2rem">
       <div class="card reveal"><span class="num" data-bg="Сутрин" data-en="Morning" data-ru="Утро">Сутрин</span><h3 data-bg="Зареждането" data-en="Stocking up" data-ru="Закупка">Зареждането</h3><p data-bg="Пазаруваме всеки ден. Зеленчуците се инспектират лично от готвачите." data-en="We shop every single day. The chefs inspect the vegetables personally." data-ru="Мы закупаем продукты каждый день. Овощи повара проверяют лично.">Пазаруваме всеки ден. Зеленчуците се инспектират лично от готвачите.</p></div>
       <div class="card reveal"><span class="num" data-bg="По обед" data-en="Midday" data-ru="В обед">По обед</span><h3 data-bg="Пикът" data-en="The rush" data-ru="Час пик">Пикът</h3><p data-bg="Днешното меню — различно от вчерашното, приготвено същата сутрин." data-en="Today's menu — different from yesterday's, cooked that same morning." data-ru="Сегодняшнее меню — не такое, как вчера, и приготовлено этим же утром.">Днешното меню — различно от вчерашното, приготвено същата сутрин.</p></div>
@@ -325,9 +336,9 @@
     </div>
   </div>
 </footer>
-<script src="assets/vendor/gsap.min.js?v=19"></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=19"></script>
-<script src="assets/vendor/lenis.min.js?v=19"></script>
-<script src="main.js?v=19"></script>
+<script src="assets/vendor/gsap.min.js?v=20"></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=20"></script>
+<script src="assets/vendor/lenis.min.js?v=20"></script>
+<script src="main.js?v=20"></script>
 </body>
 </html>

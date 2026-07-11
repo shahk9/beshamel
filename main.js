@@ -197,6 +197,121 @@
     }
   }
 
+  /* ---------- „Един ден в Бешамел": 4 акта по часовник (закачено кино, За нас) ---------- */
+  var dayCanvas = document.getElementById('dayCanvas');
+  if (dayCanvas) {
+    var dayCtx = dayCanvas.getContext('2d');
+    var dayMob = window.matchMedia('(max-width:760px)').matches;
+    var DAY_ACTS = [
+      { dir: 'assets/seq-day1/', mdir: 'assets/seq-day1-m/', n: 97, time: '05:30',
+        cap: { bg: 'Кухнята се събужда — първата пара над тенджерите.', en: 'The kitchen wakes up — the first steam over the pots.', ru: 'Кухня просыпается — первый пар над кастрюлями.' } },
+      { dir: 'assets/seq-story/', mdir: 'assets/seq-story-m/', n: 121, time: '07:30',
+        cap: { bg: 'Храната тръгва към шестте обекта.', en: 'The food sets off to all six restaurants.', ru: 'Еда отправляется во все шесть ресторанов.' } },
+      { dir: 'assets/seq-day2/', mdir: 'assets/seq-day2-m/', n: 97, time: '12:00',
+        cap: { bg: 'Пикът — днешното меню е на линията.', en: "The rush — today's menu is on the line.", ru: 'Час пик — сегодняшнее меню на линии.' } },
+      { dir: 'assets/seq-togo/', mdir: 'assets/seq-togo-m/', n: 97, time: '17:30',
+        cap: { bg: 'ToGo — прясното си идва с теб у дома.', en: 'ToGo — the fresh comes home with you.', ru: 'ToGo — свежее едет с тобой домой.' } }
+    ];
+    var dayTime = document.getElementById('dayTime');
+    var dayCap = document.getElementById('dayCap');
+    var dayDots = document.getElementById('dayDots');
+    var dayStill = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dayAct = -1, dayTarget = 0, daySmooth = 0, dayCur = { a: -1, f: -1 };
+    DAY_ACTS.forEach(function (a) { a.imgs = null; });
+
+    function dayLoad(ai) {
+      var a = DAY_ACTS[ai];
+      if (!a || a.imgs) return;
+      a.imgs = new Array(a.n);
+      var dir = dayMob ? a.mdir : a.dir;
+      for (var i = 0; i < a.n; i++) {
+        (function (i) {
+          var img = new Image();
+          img.src = dir + 'f_' + ('00' + (i + 1)).slice(-3) + '.jpg';
+          a.imgs[i] = img;
+        })(i);
+      }
+    }
+    function daySize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dayCanvas.width = Math.round(dayCanvas.clientWidth * dpr);
+      dayCanvas.height = Math.round(dayCanvas.clientHeight * dpr);
+      dayCur = { a: -1, f: -1 };
+    }
+    function dayDraw(ai, fi) {
+      var a = DAY_ACTS[ai];
+      if (!a || !a.imgs) return;
+      if (fi < 0) fi = 0; if (fi > a.n - 1) fi = a.n - 1;
+      if (dayCur.a === ai && dayCur.f === fi) return;
+      var img = a.imgs[fi];
+      if (!img || !img.complete || !img.naturalWidth) return;
+      dayCur = { a: ai, f: fi };
+      var cw = dayCanvas.width, ch = dayCanvas.height, iw = img.naturalWidth, ih = img.naturalHeight;
+      var sc = Math.max(cw / iw, ch / ih), w = iw * sc, h = ih * sc;
+      dayCtx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+    }
+    function daySetAct(ai) {
+      if (ai === dayAct) return;
+      dayAct = ai;
+      var a = DAY_ACTS[ai];
+      var l = document.documentElement.lang || 'bg';
+      dayTime.textContent = a.time;
+      /* мека смяна на надписа */
+      dayCap.classList.add('is-swap');
+      setTimeout(function () {
+        dayCap.textContent = a.cap[l] || a.cap.bg;
+        dayCap.setAttribute('data-bg', a.cap.bg);
+        dayCap.setAttribute('data-en', a.cap.en);
+        dayCap.setAttribute('data-ru', a.cap.ru);
+        dayCap.classList.remove('is-swap');
+      }, dayStill ? 0 : 180);
+      if (dayDots) {
+        Array.prototype.forEach.call(dayDots.children, function (d, i) {
+          d.classList.toggle('is-on', i === ai);
+        });
+      }
+      dayLoad(ai + 1); /* следващият акт се зарежда отрано */
+    }
+
+    window.addEventListener('resize', daySize);
+    daySize();
+    daySetAct(0);
+
+    /* кадрите на акт 1 тръгват, когато секцията наближи */
+    ScrollTrigger.create({
+      trigger: '#dayCine', start: 'top 250%', once: true,
+      onEnter: function () { dayLoad(0); dayLoad(1); }
+    });
+
+    if (!dayStill) {
+      ScrollTrigger.create({
+        trigger: '#dayCine', start: 'top top', end: '+=350%',
+        pin: true, scrub: true, anticipatePin: 1,
+        onUpdate: function (self) {
+          var p = self.progress;
+          var seg = Math.min(DAY_ACTS.length - 1, Math.floor(p * DAY_ACTS.length));
+          var local = p * DAY_ACTS.length - seg;
+          var wasAct = dayAct;
+          daySetAct(seg);
+          dayTarget = local * (DAY_ACTS[seg].n - 1);
+          /* нов акт = твърд кино-разрез, без превъртане назад */
+          if (wasAct !== seg) { daySmooth = dayTarget; dayCur = { a: -1, f: -1 }; }
+        }
+      });
+      (function dayTick() {
+        daySmooth += (dayTarget - daySmooth) * 0.2;
+        if (dayAct >= 0) dayDraw(dayAct, Math.round(daySmooth));
+        requestAnimationFrame(dayTick);
+      })();
+    } else {
+      dayLoad(0);
+      var dayOnce = setInterval(function () {
+        dayDraw(0, 0);
+        if (dayCur.f === 0) clearInterval(dayOnce);
+      }, 300);
+    }
+  }
+
   /* ---------- discipline: pinned horizontal (десктоп) / естествено плъзгане (телефон) ---------- */
   var track = document.getElementById('discTrack');
   if (track) {
