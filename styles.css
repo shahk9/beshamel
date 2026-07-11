@@ -918,3 +918,22 @@ body::after{
   border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:2.6rem}
 .catalog-note p{margin:0;color:var(--text-soft);max-width:52ch}
 @media(max-width:600px){.catalog-note{flex-direction:column;align-items:flex-start}}
+
+/* ---------- ToGo кино hero: скръб от широк кадър към макро (Kling) ---------- */
+.thero{height:230vh;position:relative;background:#0a0908}
+.thero__sticky{position:sticky;top:0;height:100vh;min-height:560px;overflow:hidden}
+.thero__canvas{position:absolute;inset:0;width:100%;height:100%;display:block;
+  background:#0a0908 url("assets/seq-togo/f_001.jpg") center/cover no-repeat}
+@media(max-width:760px){
+  .thero__canvas{background-image:url("assets/seq-togo-m/f_001.jpg")}
+}
+.thero__veil{position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,9,8,.55) 0%,rgba(10,9,8,.15) 40%,rgba(10,9,8,.25) 75%,rgba(10,9,8,.7) 100%)}
+.thero__layer{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  text-align:center;width:min(92vw,760px);z-index:2}
+.thero__outro{opacity:0}
+.thero__outro .h2{margin:0 auto}
+@media(prefers-reduced-motion:reduce){
+  .thero{height:100vh}
+  .thero__outro{display:none}
+}

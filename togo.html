@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css?v=16" />
+<link rel="stylesheet" href="styles.css?v=17" />
 </head>
 <body>
 <header class="nav" id="nav">
@@ -31,12 +31,20 @@
   </div>
 </header>
 <main class="page">
-<section class="phero dark">
-  <div class="phero__inner">
-    <p class="kicker accent" data-bg="Ела и си Вземи" data-en="Come &amp; Take" data-ru="Приходи и забирай">Ела и си Вземи</p>
-    <h1 data-bg="Бешамел ToGo" data-en="Beshamel ToGo" data-ru="Бешамел ToGo">Бешамел ToGo</h1>
-    <p class="phero__slogan">We make — you take</p>
-    <p data-bg="Иновативни, шоково охладени ястия без консерванти — занеси Бешамел вкъщи." data-en="Innovative, blast-chilled meals with no preservatives — take Beshamel home." data-ru="Инновационные шоково охлаждённые блюда без консервантов — забери Бешамел домой.">Иновативни, шоково охладени ястия без консерванти — занеси Бешамел вкъщи.</p>
+<section class="thero" id="togoCine">
+  <div class="thero__sticky">
+    <canvas class="thero__canvas" id="togoCanvas" aria-label="Бешамел ToGo — пълнени чушки с кайма"></canvas>
+    <div class="thero__veil"></div>
+    <div class="thero__layer thero__intro" id="togoIntro">
+      <p class="kicker accent" data-bg="Ела и си Вземи" data-en="Come &amp; Take" data-ru="Приходи и забирай">Ела и си Вземи</p>
+      <h1 data-bg="Бешамел ToGo" data-en="Beshamel ToGo" data-ru="Бешамел ToGo">Бешамел ToGo</h1>
+      <p class="phero__slogan">We make — you take</p>
+      <p data-bg="Иновативни, шоково охладени ястия без консерванти — занеси Бешамел вкъщи." data-en="Innovative, blast-chilled meals with no preservatives — take Beshamel home." data-ru="Инновационные шоково охлаждённые блюда без консервантов — забери Бешамел домой.">Иновативни, шоково охладени ястия без консерванти — занеси Бешамел вкъщи.</p>
+    </div>
+    <div class="thero__layer thero__outro" id="togoOutro">
+      <p class="kicker accent" data-bg="Пълнени чушки с кайма" data-en="Stuffed peppers with mince" data-ru="Перцы, фаршированные мясом">Пълнени чушки с кайма</p>
+      <h2 class="h2" data-bg="Отвори — и обядът е готов." data-en="Open it — lunch is ready." data-ru="Открой — и обед готов.">Отвори — и обядът е готов.</h2>
+    </div>
   </div>
 </section>
 
@@ -209,9 +217,9 @@
     </div>
   </div>
 </footer>
-<script src="assets/vendor/gsap.min.js?v=16"></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=16"></script>
-<script src="assets/vendor/lenis.min.js?v=16"></script>
-<script src="main.js?v=16"></script>
+<script src="assets/vendor/gsap.min.js?v=17"></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=17"></script>
+<script src="assets/vendor/lenis.min.js?v=17"></script>
+<script src="main.js?v=17"></script>
 </body>
 </html>

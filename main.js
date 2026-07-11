@@ -124,6 +124,79 @@
     })();
   }
 
+  /* ---------- ToGo кино hero: скръб от кутията към макрото (Kling) ---------- */
+  var tgCanvas = document.getElementById('togoCanvas');
+  if (tgCanvas) {
+    var tgCtx = tgCanvas.getContext('2d');
+    var TGF = 97;
+    var tgMob = window.matchMedia('(max-width:760px)').matches;
+    var tgDir = tgMob ? 'assets/seq-togo-m/' : 'assets/seq-togo/';
+    var tgImgs = new Array(TGF);
+    var tgLoaded = false, tgCur = -1, tgTarget = 0, tgSmooth = 0;
+    var tgIntro = document.getElementById('togoIntro');
+    var tgOutro = document.getElementById('togoOutro');
+    var tgStill = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function tgPad(n) { return ('00' + n).slice(-3); }
+    function tgDraw(idx) {
+      if (idx < 0) idx = 0; if (idx > TGF - 1) idx = TGF - 1;
+      if (idx === tgCur) return;
+      var img = tgImgs[idx];
+      if (!img || !img.complete || !img.naturalWidth) return;
+      tgCur = idx;
+      var cw = tgCanvas.width, ch = tgCanvas.height, iw = img.naturalWidth, ih = img.naturalHeight;
+      var sc = Math.max(cw / iw, ch / ih), w = iw * sc, h = ih * sc;
+      tgCtx.drawImage(img, (cw - w) / 2, (ch - h) / 2, w, h);
+    }
+    function tgSize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      tgCanvas.width = Math.round(tgCanvas.clientWidth * dpr);
+      tgCanvas.height = Math.round(tgCanvas.clientHeight * dpr);
+      tgCur = -1; tgDraw(Math.round(tgSmooth));
+    }
+    function tgLoad() {
+      if (tgLoaded) return;
+      tgLoaded = true;
+      for (var ti = 0; ti < TGF; ti++) {
+        (function (ti) {
+          var img = new Image();
+          img.onload = function () { if (ti === Math.round(tgSmooth)) { tgCur = -1; tgDraw(ti); } };
+          img.src = tgDir + 'f_' + tgPad(ti + 1) + '.jpg';
+          tgImgs[ti] = img;
+        })(ti);
+      }
+      window.addEventListener('resize', tgSize);
+      tgSize();
+      if (!tgStill) {
+        (function tgTick() {
+          tgSmooth += (tgTarget - tgSmooth) * 0.18;
+          tgDraw(Math.round(tgSmooth));
+          requestAnimationFrame(tgTick);
+        })();
+      }
+    }
+    /* кадрите тръгват веднага — hero е първото нещо на страницата */
+    tgLoad();
+    if (!tgStill) {
+      ScrollTrigger.create({
+        trigger: '#togoCine', start: 'top top', end: 'bottom bottom', scrub: true,
+        onUpdate: function (self) {
+          var p = self.progress;
+          tgTarget = p * (TGF - 1);
+          var io = 1 - clamp01(p / 0.3);
+          if (tgIntro) {
+            tgIntro.style.opacity = io;
+            tgIntro.style.transform = 'translate(-50%,calc(-50% - ' + (p * 48) + 'px))';
+          }
+          var oo = clamp01((p - 0.68) / 0.28);
+          if (tgOutro) {
+            tgOutro.style.opacity = oo;
+            tgOutro.style.transform = 'translate(-50%,calc(-50% + ' + ((1 - oo) * 26) + 'px))';
+          }
+        }
+      });
+    }
+  }
+
   /* ---------- discipline: pinned horizontal (десктоп) / естествено плъзгане (телефон) ---------- */
   var track = document.getElementById('discTrack');
   if (track) {
