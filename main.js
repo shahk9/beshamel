@@ -547,6 +547,7 @@
     if (dailyBtn) {
       var dc = dailyBtn.cloneNode(true);
       dc.className = 'mnav__daily';
+      if (window.BESHAMEL_ORDERS_URL) dc.href = window.BESHAMEL_ORDERS_URL;
       inner.appendChild(dc);
     }
     var orderLink = document.querySelector('.nav__order');

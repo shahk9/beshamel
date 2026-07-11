@@ -668,6 +668,112 @@ button { font-family: inherit; cursor: pointer; }
 .done__badges .done__status { margin-bottom: 0; }
 .done__status--paid { background: var(--gold); color: #241f17; }
 
+/* ---------- КАТЕГОРИЙНИ ЧИПОВЕ (sticky + scrollspy) ---------- */
+.catbar {
+  position: sticky; top: 52px; /* точната стойност се слага от JS по хедъра */
+  z-index: 30;
+  display: flex; align-items: center; gap: .5rem;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox: без видим scrollbar */
+  background: var(--cream);
+  padding: .55rem 2px .65rem;
+  margin-bottom: .2rem;
+}
+.catbar::-webkit-scrollbar { display: none; } /* WebKit: без видим scrollbar */
+.catbar__chip {
+  flex: 0 0 auto; white-space: nowrap;
+  min-height: 44px; padding: .5em 1.1em;
+  background: var(--white); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 30px;
+  font-weight: 600; font-size: .88rem;
+  transition: background .2s, color .2s, border-color .2s, transform .12s var(--ease);
+}
+.catbar__chip:hover { border-color: var(--tan); }
+.catbar__chip:active { transform: scale(.96); }
+.catbar__chip.is-active {
+  background: var(--saffron); border-color: var(--saffron); color: #241f17;
+}
+
+/* секциите по категории: h2 е първо дете → връщаме нормалния ритъм */
+.menu-sec .section-title:first-child { margin-top: 1.6rem; }
+.menu-sec:first-of-type .section-title:first-child { margin-top: .4rem; }
+
+/* ---------- „ПОДРЕДИ СИ ТАБЛАТА" (tray индикатор над количката) ---------- */
+.traybar {
+  display: flex; justify-content: center;
+  max-width: var(--maxw); margin: 0 auto .55rem;
+  pointer-events: none;
+}
+.tray {
+  pointer-events: auto;
+  display: inline-flex; align-items: center; gap: .35rem;
+  background: var(--white); border: 1px solid var(--line);
+  border-radius: 40px; padding: .3rem .55rem;
+  box-shadow: var(--shadow);
+}
+.tray__slot {
+  width: 44px; height: 44px; flex: 0 0 auto; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px dashed var(--tan); border-radius: 50%;
+  background: var(--cream-2); color: var(--brown);
+  transition: background .25s, color .25s, border-color .25s,
+    box-shadow .25s, transform .12s var(--ease);
+}
+.tray__slot svg { width: 22px; height: 22px; }
+.tray__slot:active { transform: scale(.92); }
+.tray__slot.is-filled {
+  border: 1px solid var(--saffron);
+  background: var(--saffron); color: #241f17;
+  box-shadow: 0 0 10px rgba(249, 174, 78, .45);
+  animation: traySlotIn .4s var(--ease);
+}
+@keyframes traySlotIn {
+  0% { transform: scale(.7); }
+  60% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.tray__full {
+  display: none;
+  font-weight: 700; font-size: .8rem; color: #b57612;
+  padding: 0 .5em 0 .25em; white-space: nowrap;
+}
+.tray.is-full .tray__full { display: inline; }
+/* 4/4: еднократен пулс + дискретен bounce на слотовете (без библиотеки) */
+.tray.is-celebrate { animation: trayPulse .9s var(--ease); }
+.tray.is-celebrate .tray__slot.is-filled { animation: trayBounce .6s var(--ease); }
+.tray.is-celebrate .tray__slot:nth-child(2) { animation-delay: .07s; }
+.tray.is-celebrate .tray__slot:nth-child(3) { animation-delay: .14s; }
+.tray.is-celebrate .tray__slot:nth-child(4) { animation-delay: .21s; }
+@keyframes trayPulse {
+  0% { box-shadow: var(--shadow), 0 0 0 0 rgba(249, 174, 78, .55); }
+  55% { box-shadow: var(--shadow-lg), 0 0 0 12px rgba(249, 174, 78, 0); transform: scale(1.04); }
+  100% { box-shadow: var(--shadow), 0 0 0 0 rgba(249, 174, 78, 0); transform: scale(1); }
+}
+@keyframes trayBounce {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+}
+/* когато tray-ът е видим: повече място отдолу + toast-ът се качва над него */
+body.has-tray .view.has-cartbar { padding-bottom: 160px; }
+body.has-tray .toast { bottom: 156px; }
+
+/* ---------- FLY-TO-CART ---------- */
+.fly {
+  position: fixed; z-index: 80; pointer-events: none;
+  width: 0; height: 0;
+  transition: transform .6s cubic-bezier(.3, .1, .5, 1);
+  will-change: transform;
+}
+.fly__dot {
+  width: 46px; height: 46px; margin: -23px 0 0 -23px;
+  border-radius: 50%;
+  background: var(--saffron) center / cover no-repeat;
+  border: 2px solid var(--white);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .28);
+  transition: transform .6s cubic-bezier(.6, -.35, .85, .6), opacity .55s ease;
+  will-change: transform;
+}
+
 /* по-тесни екрани: хедърът да не прелива */
 @media (max-width: 400px) {
   .hdr { gap: .5rem; }
@@ -681,3 +787,10 @@ button { font-family: inherit; cursor: pointer; }
     transition-duration: .01ms !important; scroll-behavior: auto !important;
   }
 }
+
+/* слот за категория, която днес я няма в менюто */
+.tray__slot.is-absent{opacity:.22;pointer-events:none}
+
+/* тесен екран: „начало" пада (логото води натам), нищо не прелива */
+.hdr__loc{overflow:hidden}
+@media(max-width:480px){.hdr__home{display:none}}

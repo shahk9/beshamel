@@ -119,7 +119,13 @@
       modeTogoSub: 'Готвени ястия за хладилника — от обектите или онлайн през eBag.',
       togoEbag: 'Купи онлайн от eBag',
       togoView: 'Виж ToGo продуктите',
-      startHome: 'начало'
+      startHome: 'начало',
+      trayLabel: 'Подреди си таблата',
+      traySalad: 'Салата',
+      traySoup: 'Супа',
+      trayMain: 'Основно',
+      trayDessert: 'Десерт',
+      trayFull: 'Пълна табла!'
     },
     en: {
       chooseLoc: 'Where will you pick up?',
@@ -224,7 +230,13 @@
       modeTogoSub: 'Ready-cooked dishes for your fridge — at our locations or online via eBag.',
       togoEbag: 'Buy online at eBag',
       togoView: 'See the ToGo products',
-      startHome: 'Start'
+      startHome: 'Start',
+      trayLabel: 'Build your tray',
+      traySalad: 'Salad',
+      traySoup: 'Soup',
+      trayMain: 'Main',
+      trayDessert: 'Dessert',
+      trayFull: 'Full tray!'
     },
     ru: {
       chooseLoc: 'Где заберёте заказ?',
@@ -329,7 +341,13 @@
       modeTogoSub: 'Готовые блюда для холодильника — в заведениях или онлайн через eBag.',
       togoEbag: 'Купить онлайн на eBag',
       togoView: 'Смотреть продукты ToGo',
-      startHome: 'Начало'
+      startHome: 'Начало',
+      trayLabel: 'Собери поднос',
+      traySalad: 'Салат',
+      traySoup: 'Суп',
+      trayMain: 'Основное',
+      trayDessert: 'Десерт',
+      trayFull: 'Полный поднос!'
     }
   };
 
@@ -474,6 +492,7 @@
         dish_id: dish.id,
         name_bg: dish.name.bg,
         name: dish.name, // пазим целия обект за триезично показване
+        category_slug: dish.category_slug || null, // за tray индикатора „Подреди си таблата"
         size: size,
         unit_eur: unitEur,
         unit_bgn: unitBgn,
@@ -778,7 +797,8 @@
       var addBtn = el('button', 'btn btn--solid btn--block btn--lg sheet__add', esc(ui('add')));
       addBtn.type = 'button';
       addBtn.addEventListener('click', function () {
-        addToCart(d, size, selected);
+        // rect-ът на снимката се взима СЕГА (преди close да я махне)
+        flyToCart(media, function () { addToCart(d, size, selected); });
         close();
         toast(ui('added'));
       });
@@ -1463,22 +1483,55 @@
         return;
       }
 
+      // карта dish_id → category_slug (за tray индикатора; покрива и стари
+      // артикули в количката, записани без category_slug)
+      state._dishCat = state._dishCat || {};
+      dishes.forEach(function (d) { state._dishCat[d.id] = d.category_slug; });
+
       // Групиране по категория, в реда на /categories
       var byCat = {};
       dishes.forEach(function (d) {
         (byCat[d.category_slug] = byCat[d.category_slug] || []).push(d);
       });
 
-      cats.forEach(function (cat) {
+      // категории, реално налични в менюто (за чиповете и секциите)
+      var present = cats.filter(function (c) { return byCat[c.slug] && byCat[c.slug].length; });
+
+      // sticky лента с категорийни чипове (scrollspy) — при 2+ категории
+      var chips = {};
+      if (present.length > 1) {
+        var catbar = el('nav', 'catbar');
+        catbar.id = 'catbar';
+        catbar.setAttribute('aria-label', ui('menuTitle'));
+        present.forEach(function (cat) {
+          var chip = el('button', 'catbar__chip', esc(t(cat.name)));
+          chip.type = 'button';
+          chip.addEventListener('click', function () { scrollToCategory(cat.slug); });
+          chips[cat.slug] = chip;
+          catbar.appendChild(chip);
+        });
+        view.appendChild(catbar);
+        positionCatbar();
+      }
+      state._chips = chips;
+
+      // секциите по категории (с id за скрол от чип/tray слот)
+      var sections = [];
+      present.forEach(function (cat) {
         var list = byCat[cat.slug];
-        if (!list || !list.length) return;
-        view.appendChild(el('h2', 'section-title', esc(t(cat.name))));
+        var sec = el('section', 'menu-sec');
+        sec.id = 'cat-' + cat.slug;
+        sec.appendChild(el('h2', 'section-title', esc(t(cat.name))));
         var grid = el('div', 'dish-grid');
         list.forEach(function (d) {
           grid.appendChild(dishCard(d, unavailable.indexOf(d.id) >= 0));
         });
-        view.appendChild(grid);
+        sec.appendChild(grid);
+        view.appendChild(sec);
+        sections.push({ slug: cat.slug, el: sec });
       });
+      state._menuSections = sections;
+      state._activeCat = null;
 
       // Ястия с непозната категория (fallback) — накрая
       var known = {};
@@ -1491,6 +1544,7 @@
       }
 
       updateCartBar();
+      updateScrollSpy(); // начален активен чип
     }).catch(function (err) {
       renderError(ui('errNetwork'), screenMenu);
     });
@@ -1586,8 +1640,9 @@
       add.setAttribute('aria-label', ui('add') + ': ' + t(d.name));
       add.addEventListener('click', function () {
         var sz = (hasLarge ? (state.sizeChoice[d.id] || 'normal') : 'normal');
-        // бърз add от картата → default_on (resolveOptions без selected)
-        addToCart(d, sz);
+        // бърз add от картата → default_on (resolveOptions без selected);
+        // снимката „излита" към количката (уважава reduced-motion)
+        flyToCart(media, function () { addToCart(d, sz); });
         toast(ui('added'));
       });
       actions.appendChild(add);
@@ -2050,6 +2105,14 @@
   }
 
   var lastBarCount = 0; // за „подскачането" при добавяне
+  var suppressBump = false; // fly-to-cart отлага bump-а до „кацането"
+  function bumpCartbar() {
+    var btn = document.getElementById('cartbarBtn');
+    if (!btn) return;
+    btn.classList.remove('is-bump');
+    void btn.offsetWidth; // рестартирай анимацията
+    btn.classList.add('is-bump');
+  }
   function updateCartBar() {
     var bar = document.getElementById('cartbar');
     var count = cartCount();
@@ -2063,14 +2126,254 @@
       var totals = cartTotals();
       document.getElementById('cartbarTotal').textContent = fmtEur(totals.eur);
       // привлечи окото, когато нещо ново влезе в количката
-      if (count > lastBarCount) {
-        var btn = document.getElementById('cartbarBtn');
-        btn.classList.remove('is-bump');
-        void btn.offsetWidth; // рестартирай анимацията
-        btn.classList.add('is-bump');
-      }
+      if (count > lastBarCount && !suppressBump) bumpCartbar();
     }
     lastBarCount = count;
+    updateTray();
+  }
+
+  /* ============================================================
+     „ПОДРЕДИ СИ ТАБЛАТА" — tray индикатор над количката (#menu)
+     Слот светва, щом количката съдържа ястие от категорията му.
+     ============================================================ */
+  var TRAY_SVG = {
+    salad:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<path d="M4 13h16a8 8 0 0 1-16 0Z"/>' +
+      '<path d="M13.2 9.8c.3-2.8 2-4.4 4.8-4.6-.3 2.8-2 4.4-4.8 4.6Z"/>' +
+      '<path d="M10.6 9.8C10.4 7.6 9.2 6.2 7 5.8c.2 2.2 1.4 3.6 3.6 4Z"/></svg>',
+    soup:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<path d="M4 11h16a8 8 0 0 1-16 0Z"/>' +
+      '<path d="M9.6 8.2c0-1.1.9-1.5.9-2.7"/><path d="M13.6 8.2c0-1.1.9-1.5.9-2.7"/></svg>',
+    main:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<path d="M4 16.5h16"/><path d="M5.5 16.5a6.5 6.5 0 0 1 13 0"/>' +
+      '<path d="M12 10v-.9"/><circle cx="12" cy="7.9" r="1"/></svg>',
+    dessert:
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" ' +
+      'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' +
+      '<path d="M6.5 12.5h11l-1.4 6.5H7.9l-1.4-6.5Z"/>' +
+      '<path d="M7.3 12.5a4.8 4.8 0 0 1 9.4 0"/><path d="M12 5.7V4.5"/></svg>'
+  };
+  // мапинг категория → слот: salati→салата, supi→супа,
+  // bez-meso + meso-riba→основно, deserti→десерт (togo-semeini не участва)
+  var TRAY_SLOTS = [
+    { key: 'salad', label: 'traySalad', cats: ['salati'] },
+    { key: 'soup', label: 'traySoup', cats: ['supi'] },
+    { key: 'main', label: 'trayMain', cats: ['bez-meso', 'meso-riba'] },
+    { key: 'dessert', label: 'trayDessert', cats: ['deserti'] }
+  ];
+  var trayWasFull = false;
+
+  // строи tray-а веднъж — вътре в #cartbar, над бутона (мести се със safe-area)
+  function buildTray() {
+    var bar = document.getElementById('cartbar');
+    if (!bar || document.getElementById('traybar')) return;
+    var wrap = el('div', 'traybar');
+    wrap.id = 'traybar';
+    wrap.hidden = true;
+    var tray = el('div', 'tray');
+    tray.setAttribute('role', 'group');
+    TRAY_SLOTS.forEach(function (slot) {
+      var b = el('button', 'tray__slot', TRAY_SVG[slot.key]);
+      b.type = 'button';
+      b.setAttribute('data-slot', slot.key);
+      b.addEventListener('click', function () {
+        // клик върху слот → скрол до категорията (за основно → първата налична)
+        for (var i = 0; i < slot.cats.length; i++) {
+          if (document.getElementById('cat-' + slot.cats[i])) {
+            scrollToCategory(slot.cats[i]);
+            return;
+          }
+        }
+      });
+      tray.appendChild(b);
+    });
+    var full = el('span', 'tray__full');
+    full.setAttribute('aria-live', 'polite');
+    tray.appendChild(full);
+    wrap.appendChild(tray);
+    bar.insertBefore(wrap, bar.firstChild);
+  }
+
+  // категорията на артикул: от записа в количката или от картата dish→slug
+  function cartItemCat(it) {
+    return it.category_slug || (state._dishCat && state._dishCat[it.dish_id]) || null;
+  }
+  function traySlotFilled(slot) {
+    for (var i = 0; i < state.cart.length; i++) {
+      var cat = cartItemCat(state.cart[i]);
+      if (cat && slot.cats.indexOf(cat) >= 0) return true;
+    }
+    return false;
+  }
+
+  function updateTray() {
+    var wrap = document.getElementById('traybar');
+    if (!wrap) return;
+    var tray = wrap.querySelector('.tray');
+    tray.setAttribute('aria-label', ui('trayLabel'));
+
+    var filled = 0, available = 0;
+    TRAY_SLOTS.forEach(function (slot) {
+      var b = tray.querySelector('[data-slot="' + slot.key + '"]');
+      /* категория, която липсва в днешното меню → приглушен слот, не се брои */
+      var avail = slot.cats.some(function (c) { return !!document.getElementById('cat-' + c); });
+      b.classList.toggle('is-absent', !avail);
+      if (avail) available++;
+      var on = avail && traySlotFilled(slot);
+      if (on) filled++;
+      b.classList.toggle('is-filled', on);
+      b.setAttribute('aria-label', ui(slot.label));
+      b.title = ui(slot.label);
+    });
+
+    var isFull = available > 0 && filled === available;
+    tray.classList.toggle('is-full', isFull);
+    tray.querySelector('.tray__full').textContent = isFull ? ui('trayFull') : '';
+    // еднократен пулс + дискретен празничен bounce при 4/4
+    if (isFull && !trayWasFull) {
+      tray.classList.remove('is-celebrate');
+      void tray.offsetWidth;
+      tray.classList.add('is-celebrate');
+      setTimeout(function () { tray.classList.remove('is-celebrate'); }, 1400);
+    }
+    trayWasFull = isFull;
+
+    // скрит при празна количка ИЛИ извън #menu
+    var hash = location.hash || '#location';
+    var show = hash === '#menu' && state.cart.length > 0;
+    wrap.hidden = !show;
+    document.body.classList.toggle('has-tray', show);
+  }
+
+  /* ============================================================
+     КАТЕГОРИЙНИ ЧИПОВЕ + SCROLLSPY (#menu)
+     ============================================================ */
+  function prefersReduced() {
+    return !!(window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+  // sticky отместване: хедър + лента с чипове
+  function menuScrollOffset() {
+    var hdr = document.querySelector('.hdr');
+    var cb = document.getElementById('catbar');
+    return (hdr ? hdr.offsetHeight : 0) + (cb ? cb.offsetHeight : 0) + 8;
+  }
+  // лентата ляга точно под sticky хедъра (височината му варира по екрани)
+  function positionCatbar() {
+    var cb = document.getElementById('catbar');
+    if (!cb) return;
+    var hdr = document.querySelector('.hdr');
+    cb.style.top = ((hdr ? hdr.offsetHeight : 52) - 1) + 'px';
+  }
+  function scrollToCategory(slug) {
+    var sec = document.getElementById('cat-' + slug);
+    if (!sec) return;
+    var y = Math.max(0, sec.getBoundingClientRect().top + window.pageYOffset - menuScrollOffset());
+    // стари браузъри без ScrollToOptions → директен скок
+    try {
+      window.scrollTo({ top: y, behavior: prefersReduced() ? 'auto' : 'smooth' });
+    } catch (e) {
+      window.scrollTo(0, y);
+    }
+  }
+
+  var spyTick = false;
+  function onMenuScroll() {
+    if (spyTick) return;
+    spyTick = true;
+    requestAnimationFrame(function () {
+      spyTick = false;
+      updateScrollSpy();
+    });
+  }
+  function updateScrollSpy() {
+    var secs = state._menuSections;
+    var chips = state._chips;
+    if (!secs || !secs.length || !chips || !document.getElementById('catbar')) return;
+    var off = menuScrollOffset() + 30;
+    var active = secs[0].slug;
+    for (var i = 0; i < secs.length; i++) {
+      if (secs[i].el.getBoundingClientRect().top <= off) active = secs[i].slug;
+    }
+    // на дъното на страницата → последната секция е активна
+    if (window.innerHeight + window.pageYOffset >=
+        document.documentElement.scrollHeight - 4) {
+      active = secs[secs.length - 1].slug;
+    }
+    if (active === state._activeCat) return;
+    state._activeCat = active;
+    Object.keys(chips).forEach(function (slug) {
+      chips[slug].classList.toggle('is-active', slug === active);
+    });
+    var chip = chips[active];
+    if (chip && chip.scrollIntoView) {
+      chip.scrollIntoView({
+        behavior: prefersReduced() ? 'auto' : 'smooth',
+        inline: 'center', block: 'nearest'
+      });
+    }
+  }
+
+  /* ============================================================
+     FLY-TO-CART — кръгло копие на снимката (или шафранова точка)
+     излита по дъга от картата към количката; после bump.
+     При prefers-reduced-motion: нищо не лети (само bump-ът).
+     ============================================================ */
+  function flyToCart(sourceMediaEl, doAdd) {
+    if (prefersReduced() || !sourceMediaEl) { doAdd(); return; }
+
+    // стартовият rect се взима ПРЕДИ doAdd/close да пипнат DOM-а
+    var srcRect = sourceMediaEl.getBoundingClientRect();
+    var img = sourceMediaEl.querySelector('img');
+    var imgSrc = img ? (img.currentSrc || img.src) : null;
+
+    suppressBump = true;
+    doAdd(); // количката се обновява; cartbar-ът става видим
+    suppressBump = false;
+
+    var target = document.getElementById('cartbarCount');
+    var bar = document.getElementById('cartbar');
+    if (!target || !bar || bar.hidden || !srcRect.width) { bumpCartbar(); return; }
+    var tRect = target.getBoundingClientRect();
+    if (!tRect.width && !tRect.height) { bumpCartbar(); return; }
+
+    var sx = srcRect.left + srcRect.width / 2;
+    var sy = srcRect.top + srcRect.height / 2;
+    var tx = tRect.left + tRect.width / 2;
+    var ty = tRect.top + tRect.height / 2;
+
+    // дъга: обвивката движи X, точката — Y (с „изгърбено" easing) + смаляване
+    var fwrap = el('div', 'fly');
+    var dot = el('div', 'fly__dot');
+    if (imgSrc) dot.style.backgroundImage = 'url("' + imgSrc.replace(/"/g, '%22') + '")';
+    fwrap.appendChild(dot);
+    fwrap.style.left = sx + 'px';
+    fwrap.style.top = sy + 'px';
+    document.body.appendChild(fwrap);
+
+    var done = false;
+    function land() {
+      if (done) return;
+      done = true;
+      fwrap.remove();
+      bumpCartbar(); // съществуващият bump — след „кацането"
+    }
+    dot.addEventListener('transitionend', land);
+    setTimeout(land, 800); // застраховка, ако transitionend не дойде
+
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fwrap.style.transform = 'translateX(' + (tx - sx) + 'px)';
+        dot.style.transform = 'translateY(' + (ty - sy) + 'px) scale(.22)';
+        dot.style.opacity = '.85';
+      });
+    });
   }
 
   // Прилагаме текущия език към статичните UI надписи (data-i18n) + активен бутон
@@ -2177,6 +2480,11 @@
     document.getElementById('cartbarBtn').addEventListener('click', function () {
       location.hash = '#cart';
     });
+
+    // „Подреди си таблата" (tray) + scrollspy на категорийните чипове
+    buildTray();
+    window.addEventListener('scroll', onMenuScroll, { passive: true });
+    window.addEventListener('resize', positionCatbar);
 
     // при запомнен обект — възстановяваме името му (async, за хедъра)
     if (state.locationId) {

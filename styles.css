@@ -911,3 +911,10 @@ body::after{
 .photo-band{width:100%;aspect-ratio:21/9;object-fit:cover;border-radius:14px;
   margin-top:2.4rem;display:block;box-shadow:var(--shadow-card)}
 @media(max-width:760px){.photo-band{aspect-ratio:16/10}}
+
+/* ---------- каталог: лентата „това не е менюто за днес" ---------- */
+.catalog-note{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;
+  background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--saffron);
+  border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:2.6rem}
+.catalog-note p{margin:0;color:var(--text-soft);max-width:52ch}
+@media(max-width:600px){.catalog-note{flex-direction:column;align-items:flex-start}}

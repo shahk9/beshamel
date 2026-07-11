@@ -3,10 +3,10 @@
 // На GitHub Pages поръчките живеят в подпапка /orders/ на същия сайт.
 window.BESHAMEL_ORDERS_URL = window.location.hostname.endsWith("github.io")
   ? "orders/"
-  : "https://launch-from-software-advisors.trycloudflare.com";
+  : "https://appointed-muze-judy-motels.trycloudflare.com";
 
 // Адресът на API-то (форми/заявки). Прод: https://beshamel.bg (или api субдомейн)
-window.BESHAMEL_API_URL = "https://switches-art-oct-gzip.trycloudflare.com";
+window.BESHAMEL_API_URL = "https://baker-listings-pizza-said.trycloudflare.com";
 
 // ============================================================
 //  ПРОМОЦИИТЕ НА СЕДМИЦАТА — Бешамел
