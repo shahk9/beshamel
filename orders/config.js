@@ -10,7 +10,7 @@
   //       е на отделен домейн (напр. 'https://beshamel.bg/api/v1').
   // ДЕМО (временно): публичен тунел към API-то, за да работи от телефон.
   // При качване на прод — върни на '/api/v1' или 'https://beshamel.bg/api/v1'.
-  var DEMO_API = 'https://baker-listings-pizza-said.trycloudflare.com/api/v1';
+  var DEMO_API = 'https://wellness-connections-modelling-dan.trycloudflare.com/api/v1';
 
   var apiBase = isLocal
     ? 'http://127.0.0.1:8200/api/v1'
