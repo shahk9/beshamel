@@ -1,12 +1,16 @@
 // Адресът на онлайн поръчките. При пускане на прод се сменя на:
 //   window.BESHAMEL_ORDERS_URL = "https://orders.beshamel.bg";
 // На GitHub Pages поръчките живеят в подпапка /orders/ на същия сайт.
-window.BESHAMEL_ORDERS_URL = window.location.hostname.endsWith("github.io")
+window.BESHAMEL_ORDERS_URL = window.location.hostname.endsWith("beshamel.work")
+  ? "https://orders.beshamel.work"
+  : window.location.hostname.endsWith("github.io")
   ? "orders/"
-  : "https://nationally-cycle-manga-condition.trycloudflare.com";
+  : "https://orders.beshamel.work";
 
 // Адресът на API-то (форми/заявки). Прод: https://beshamel.bg (или api субдомейн)
-window.BESHAMEL_API_URL = "https://wellness-connections-modelling-dan.trycloudflare.com";
+window.BESHAMEL_API_URL = window.location.hostname.endsWith("beshamel.work")
+  ? "https://api.beshamel.work"
+  : "https://api.beshamel.work";
 
 // ============================================================
 //  ПРОМОЦИИТЕ НА СЕДМИЦАТА — Бешамел

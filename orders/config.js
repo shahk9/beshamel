@@ -8,12 +8,13 @@
   // ПРОД: приложението ще живее на orders.beshamel.bg и очаква API на същия домейн
   //       или на beshamel.bg. Смени реда по-долу при качване на прод, ако API-то
   //       е на отделен домейн (напр. 'https://beshamel.bg/api/v1').
-  // ДЕМО (временно): публичен тунел към API-то, за да работи от телефон.
-  // При качване на прод — върни на '/api/v1' или 'https://beshamel.bg/api/v1'.
-  var DEMO_API = 'https://wellness-connections-modelling-dan.trycloudflare.com/api/v1';
+  // Навсякъде другаде (GitHub Pages и т.н.) — продукционното API.
+  var DEMO_API = 'https://api.beshamel.work/api/v1';
 
   var apiBase = isLocal
     ? 'http://127.0.0.1:8200/api/v1'
+    : host.endsWith('beshamel.work')
+    ? 'https://api.beshamel.work/api/v1'
     : DEMO_API;
 
   window.ORDERS_CONFIG = {
